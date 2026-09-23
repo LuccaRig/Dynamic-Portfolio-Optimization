@@ -1,6 +1,4 @@
-#ifndef MERCADO_HPP
-#define MERCADO_HPP
-
+#pragma once
 #include <vector>
 
 class Mercado {
@@ -10,17 +8,17 @@ public:
 
     int tamanhoHistorico() const;
     int numAtivos() const;
+
     std::vector<double> calcularRetornosEsperados(int dia_atual, int tamanho_janela) const;
     std::vector<std::vector<double>> calcularMatrizCovariancia(int dia_atual, int tamanho_janela) const;
+
+    std::vector<std::vector<double>> obterCenariosRetorno(int dia_atual, int tamanho_janela) const;
     std::vector<double> obterRetornosReais(int dia_atual) const;
     double obterCdiDia(int dia_atual) const;
-    std::vector<double> obterCdiHorizonte(int dia_atual, int horizonte_N) const;
 
 private:
     std::vector<std::vector<double>> historico_retornos_;
     std::vector<double> historico_cdi_;
-    int num_dias_;
-    int num_ativos_;
+    int num_dias_ = 0;
+    int num_ativos_ = 0;
 };
-
-#endif
