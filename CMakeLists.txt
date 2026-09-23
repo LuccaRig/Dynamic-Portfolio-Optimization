@@ -17,6 +17,10 @@ set(SOURCES
     src/Mercado.cpp
     src/SimuladorPortfolio.cpp
     src/DifferentialEvolution.cpp
+    src/Relatorio.cpp
+    src/Estatisticas.cpp
+    src/Dados.cpp
+    src/Backtest.cpp
 )
 
 # Cria o executável
