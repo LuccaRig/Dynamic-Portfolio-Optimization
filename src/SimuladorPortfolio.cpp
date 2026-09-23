@@ -1,87 +1,160 @@
 #include "SimuladorPortfolio.hpp"
-#include <cmath>
 #include <algorithm>
+#include <cmath>
+#include <numeric>
+#include <stdexcept>
+
+namespace {
+double calcularVariancia(const std::vector<double>& w,
+                         const std::vector<std::vector<double>>& sigma) {
+    double v = 0.0;
+    for (size_t i = 0; i < w.size(); ++i)
+        for (size_t j = 0; j < w.size(); ++j)
+            v += w[i] * sigma[i][j] * w[j];
+    return std::max(0.0, v);
+}
+
+double calcularCVaR(
+    const std::vector<double>& w,
+    double cdi,
+    const std::vector<std::vector<double>>& cenarios,
+    double alpha) {
+
+    if (cenarios.empty()) return 0.0;
+    if (!(alpha > 0.0 && alpha < 1.0))
+        throw std::invalid_argument("cvar_alpha deve estar entre 0 e 1.");
+
+    std::vector<double> perdas;
+    perdas.reserve(cenarios.size());
+
+    const double caixa = 1.0 - std::accumulate(w.begin(), w.end(), 0.0);
+
+    for (const auto& retorno : cenarios) {
+        double rp = caixa * cdi;
+        for (size_t i = 0; i < w.size(); ++i)
+            rp += w[i] * retorno[i];
+
+        perdas.push_back(-rp);
+    }
+
+    std::sort(perdas.begin(), perdas.end(), std::greater<double>());
+
+    const double tail_real = (1.0 - alpha) * perdas.size();
+    const int n_tail = std::max(1, static_cast<int>(std::ceil(tail_real)));
+
+    double soma = 0.0;
+    for (int i = 0; i < n_tail; ++i)
+        soma += perdas[i];
+
+    return soma / static_cast<double>(n_tail);
+}
+}
+
+std::vector<double> SimuladorPortfolio::repararPesos(
+    const std::vector<double>& peso_inicial,
+    const std::vector<double>& delta,
+    double max_turnover) {
+
+    if (peso_inicial.size() != delta.size())
+        throw std::invalid_argument("peso_inicial e delta possuem tamanhos diferentes.");
+
+    std::vector<double> candidato(peso_inicial.size());
+
+    // 1. Candidato bruto
+    for (size_t i = 0; i < candidato.size(); ++i)
+        candidato[i] = peso_inicial[i] + delta[i];
+
+    // 2. Long-only
+    for (double& w : candidato)
+        w = std::max(0.0, w);
+
+    // 3. Orçamento: soma dos ativos de risco <= 1
+    double soma = std::accumulate(candidato.begin(), candidato.end(), 0.0);
+    if (soma > 1.0) {
+        for (double& w : candidato)
+            w /= soma;
+    }
+
+    // 4. Restrição dura de turnover.
+    std::vector<double> delta_reparado(candidato.size());
+    double turnover = 0.0;
+
+    for (size_t i = 0; i < candidato.size(); ++i) {
+        delta_reparado[i] = candidato[i] - peso_inicial[i];
+        turnover += std::abs(delta_reparado[i]);
+    }
+
+    if (turnover > max_turnover && turnover > 0.0) {
+        const double escala = max_turnover / turnover;
+        for (size_t i = 0; i < candidato.size(); ++i)
+            candidato[i] = peso_inicial[i] + escala * delta_reparado[i];
+    }
+
+    return candidato;
+}
 
 double SimuladorPortfolio::avaliarTrajetoria(
     const std::vector<double>& peso_inicial,
     const std::vector<std::vector<double>>& trajetoria_deltas,
     const std::vector<std::vector<double>>& matriz_covariancia,
     const std::vector<double>& retornos_esperados,
+    const std::vector<double>& cdi_horizonte,
+    const std::vector<std::vector<double>>& cenarios_retornos,
     const ParametrosCusto& params,
-    double max_turnover
-) {
-    int N = trajetoria_deltas.size();
-    int M = peso_inicial.size();
-    
-    std::vector<double> peso_atual = peso_inicial;
-    double custo_total = 0.0;
-    
-    std::vector<double> historico_retornos_simulados;
+    double max_turnover) {
+
+    const int N = static_cast<int>(trajetoria_deltas.size());
+    if (N == 0) return 1e12;
+
+    std::vector<double> pesos_atuais = peso_inicial;
+
+    double retorno_acumulado = 0.0;
+    double variancia_acumulada = 0.0;
+    double cvar_acumulado = 0.0;
+    double custo_transacao = 0.0;
 
     for (int k = 0; k < N; ++k) {
-        const auto& delta_w = trajetoria_deltas[k];
-        
-        // 1. Validação de Turnover no passo
-        double turnover_passo = 0.0;
-        std::vector<double> proximo_peso(M);
-        for (int i = 0; i < M; ++i) {
-            proximo_peso[i] = peso_atual[i] + delta_w[i];
-            turnover_passo += std::abs(delta_w[i]);
-        }
+        const auto pesos_novos = repararPesos(
+            pesos_atuais, trajetoria_deltas[k], max_turnover);
 
-        if (turnover_passo > max_turnover) {
-            return 1e9; // Penalidade por violação de restrição
-        }
+        double turnover = 0.0;
+        for (size_t i = 0; i < pesos_novos.size(); ++i)
+            turnover += std::abs(pesos_novos[i] - pesos_atuais[i]);
 
-        // 2. Limites físicos (0 <= w_i <= 1 e soma <= 1)
-        double soma_pesos = 0.0;
-        for (int i = 0; i < M; ++i) {
-            if (proximo_peso[i] < 0.0 || proximo_peso[i] > 1.0) return 1e9;
-            soma_pesos += proximo_peso[i];
-        }
-        if (soma_pesos > 1.0) return 1e9;
+        const double soma_risco =
+            std::accumulate(pesos_novos.begin(), pesos_novos.end(), 0.0);
 
-        // 3. Retorno do Portfólio no passo k (incluindo caixa/CDI)
-        double retorno_port = 0.0;
-        for (int i = 0; i < M; ++i) {
-            retorno_port += proximo_peso[i] * retornos_esperados[i];
-        }
-        double peso_caixa = 1.0 - soma_pesos;
-        retorno_port += peso_caixa * params.rf;
+        const double cdi = (k < static_cast<int>(cdi_horizonte.size()))
+                               ? cdi_horizonte[k]
+                               : cdi_horizonte.back();
 
-        historico_retornos_simulados.push_back(retorno_port);
+        double retorno_risco = 0.0;
+        for (size_t i = 0; i < pesos_novos.size(); ++i)
+            retorno_risco += pesos_novos[i] * retornos_esperados[i];
 
-        // 4. Variância global (w^T * Sigma * w)
-        double varianca_portfolio = 0.0;
-        for (int i = 0; i < M; ++i) {
-            for (int j = 0; j < M; ++j) {
-                varianca_portfolio += proximo_peso[i] * matriz_covariancia[i][j] * proximo_peso[j];
-            }
-        }
+        const double retorno_caixa = (1.0 - soma_risco) * cdi;
+        retorno_acumulado += retorno_risco + retorno_caixa;
 
-        // 5. Custo instantâneo da função scalarizada
-        double retorno_excedente = retorno_port - params.rf;
-        double custo_passo = -params.alpha * retorno_excedente 
-                             + params.gamma * varianca_portfolio 
-                             + params.eta * turnover_passo;
-        
-        custo_total += custo_passo;
-        peso_atual = proximo_peso;
+        variancia_acumulada += calcularVariancia(
+            pesos_novos, matriz_covariancia);
+
+        cvar_acumulado += calcularCVaR(
+            pesos_novos, cdi, cenarios_retornos, params.cvar_alpha);
+
+        // Custo linear de negociação, além da restrição de turnover.
+        custo_transacao += turnover;
+
+        pesos_atuais = pesos_novos;
     }
 
-    // 6. CVaR (Risco de Cauda) no horizonte simulado
-    if (!historico_retornos_simulados.empty()) {
-        auto retornos_copia = historico_retornos_simulados;
-        std::sort(retornos_copia.begin(), retornos_copia.end());
-        int idx_cvar = std::max(0, (int)(0.1 * retornos_copia.size()));
-        double cvar = 0.0;
-        for (int i = 0; i <= idx_cvar; ++i) {
-            cvar += retornos_copia[i];
-        }
-        cvar /= (idx_cvar + 1);
-        
-        custo_total += params.beta * std::abs(cvar);
-    }
+    const double retorno_medio = retorno_acumulado / N;
+    const double variancia_media = variancia_acumulada / N;
+    const double cvar_medio = cvar_acumulado / N;
+    const double turnover_medio = custo_transacao / N;
 
-    return custo_total;
+    return
+        -params.alpha * retorno_medio +
+         params.gamma * variancia_media +
+         params.beta * cvar_medio +
+         params.eta * turnover_medio;
 }

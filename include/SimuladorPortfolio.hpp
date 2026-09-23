@@ -1,26 +1,23 @@
-#ifndef SIMULADOR_PORTFOLIO_HPP
-#define SIMULADOR_PORTFOLIO_HPP
-
+#pragma once
 #include <vector>
-
-struct ParametrosCusto {
-    double alpha; // Retorno Excedente
-    double beta;  // CVaR (Risco de Cauda)
-    double gamma; // Variância Global
-    double eta;   // Turnover / Custos
-    double rf;    // Taxa livre de risco (CDI vigente)
-};
+#include "Parametros.hpp"
 
 class SimuladorPortfolio {
 public:
     static double avaliarTrajetoria(
         const std::vector<double>& peso_inicial,
-        const std::vector<std::vector<double>>& trajetoria_deltas, // N passos de Δw
-        const std::vector<std::vector<double>>& matriz_covariancia, // Σ
-        const std::vector<double>& retornos_esperados, // μ̂
+        const std::vector<std::vector<double>>& trajetoria_deltas,
+        const std::vector<std::vector<double>>& matriz_covariancia,
+        const std::vector<double>& retornos_esperados,
+        const std::vector<double>& cdi_horizonte,
+        const std::vector<std::vector<double>>& cenarios_retornos,
         const ParametrosCusto& params,
         double max_turnover
     );
-};
 
-#endif
+    static std::vector<double> repararPesos(
+        const std::vector<double>& peso_inicial,
+        const std::vector<double>& delta,
+        double max_turnover
+    );
+};
