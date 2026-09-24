@@ -69,3 +69,28 @@ std::vector<std::vector<double>> carregarCSV2D(
 
     return dados;
 }
+
+std::vector<std::string> carregarCSVTickers(const std::string& nome_arquivo)
+{
+    std::vector<std::string> tickers;
+    std::ifstream arquivo(nome_arquivo);
+
+    if (!arquivo.is_open()) {
+        std::cerr << "Erro ao abrir arquivo de tickers: "
+                  << nome_arquivo << std::endl;
+        return tickers;
+    }
+
+    std::string linha;
+    while (std::getline(arquivo, linha)) {
+        // Remove espaços, tabs e quebras de linha (incluindo o \r do Windows)
+        linha.erase(0, linha.find_first_not_of(" \t\r\n"));
+        linha.erase(linha.find_last_not_of(" \t\r\n") + 1);
+
+        if (!linha.empty()) {
+            tickers.push_back(linha);
+        }
+    }
+
+    return tickers;
+}

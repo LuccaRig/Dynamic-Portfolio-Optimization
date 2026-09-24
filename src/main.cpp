@@ -14,11 +14,11 @@ int main()
         << std::endl;
 
     // 1. Dados
-    auto historico_retornos =
-        carregarCSV2D("historico_retornos.csv");
+    auto historico_retornos = carregarCSV2D("historico_retornos.csv");
 
-    auto historico_cdi =
-        carregarCSV1D("historico_cdi.csv");
+    auto historico_cdi = carregarCSV1D("historico_cdi.csv");
+
+    auto nome_ativos = carregarCSVTickers("ativos_nomes.csv");
 
     if (historico_retornos.empty() ||
         historico_cdi.empty()) {
@@ -33,7 +33,8 @@ int main()
     // 2. Mercado
     Mercado mercado(
         historico_retornos,
-        historico_cdi
+        historico_cdi,
+        nome_ativos
     );
 
     const int num_ativos =

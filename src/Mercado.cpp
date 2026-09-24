@@ -5,9 +5,11 @@
 
 Mercado::Mercado(
     const std::vector<std::vector<double>>& historico_retornos_diarios,
-    const std::vector<double>& historico_cdi)
+    const std::vector<double>& historico_cdi,
+    const std::vector<std::string> nomes_ativos)
     : historico_retornos_(historico_retornos_diarios),
-      historico_cdi_(historico_cdi) {
+      historico_cdi_(historico_cdi),
+      nomes_ativos_(nomes_ativos) {
 
     num_dias_ = static_cast<int>(historico_retornos_.size());
     if (num_dias_ > 0)
@@ -21,6 +23,7 @@ Mercado::Mercado(
 
 int Mercado::tamanhoHistorico() const { return num_dias_; }
 int Mercado::numAtivos() const { return num_ativos_; }
+std::vector<std::string> Mercado::obterNomesAtivos() const {return nomes_ativos_;}
 
 std::vector<double> Mercado::calcularRetornosEsperados(
     int dia_atual, int tamanho_janela) const {

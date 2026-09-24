@@ -28,6 +28,26 @@ void imprimirRelatorio(
         << "Dias simulados             : "
         << resultado.retornos_portfolio.size()
         << std::endl;
+
+    std::cout
+        << "\n--- CARTEIRA INICIAL (PESOS) ---\n";
+    double soma_pesos_init = 0.0;
+    
+    for (size_t i = 0; i < resultado.pesos_iniciais.size(); ++i) {
+        // Pega o nome do ativo correspondente, ou usa "Ativo i" como fallback se faltar no vetor
+        std::string nome = (i < resultado.nomes_ativos.size()) 
+                           ? resultado.nomes_ativos[i] 
+                           : ("Ativo " + std::to_string(i));
+
+        // Formata alinhando o nome e o percentual para um relatório limpo
+        std::cout << std::left << std::setw(25) << nome + ":" 
+                  << std::right << std::setw(6) << resultado.pesos_iniciais[i] * 100.0 << "%\n";
+                  
+        soma_pesos_init += resultado.pesos_iniciais[i];
+    }
+    
+    std::cout << std::left << std::setw(25) << "Caixa inicial:" 
+              << std::right << std::setw(6) << (1.0 - soma_pesos_init) * 100.0 << "%\n";
     
     std::cout
         << "\n--- RETORNO (MPC vs. BUY & HOLD) ---\n"
@@ -89,13 +109,6 @@ void imprimirRelatorio(
         << m.var_95 * 100.0 << "%\n"
         << "CVaR 95% diario            : "
         << m.cvar_95 * 100.0 << "%\n";
-
-    std::cout
-        << "\n--- CDI ---\n"
-        << "CDI acumulado              : "
-        << m.retorno_cdi_acumulado * 100.0 << "%\n"
-        << "Excesso sobre CDI          : "
-        << m.excesso_cdi * 100.0 << "%\n";
 
     std::cout
         << "\n--- TURNOVER ---\n"

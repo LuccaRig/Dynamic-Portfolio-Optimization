@@ -100,6 +100,8 @@ ResultadoBacktest executarBacktest(
 
         if (!bh_inicializado) {
             pesos_bh = peso_atual; 
+            resultado.pesos_iniciais = peso_atual;
+            resultado.nomes_ativos = mercado.obterNomesAtivos();
             bh_inicializado = true;
         }
 
