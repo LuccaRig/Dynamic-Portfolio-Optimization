@@ -322,13 +322,7 @@ Novo período
 
 O retorno realizado do portfólio é calculado por:
 
-$$
-R_t^{real}
-=
-w_t^T r_t
-+
-(1-\mathbf{1}^Tw_t)c_t
-$$
+$$ R_t^{real} = w_t^T r_t + (1-\mathbf{1}^Tw_t)c_t $$
 
 O sistema também compara o resultado do MPC com uma estratégia **Buy & Hold**.
 
