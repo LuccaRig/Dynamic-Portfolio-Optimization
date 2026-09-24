@@ -22,6 +22,7 @@ struct ResultadoBacktest {
     std::vector<double> retornos_bh;     
     std::vector<double> turnovers;
     std::vector<double> pesos_iniciais;
+    std::vector<double> pesos_finais;
     std::vector<std::string> nomes_ativos;
     MetricasBacktest metricas;
     MetricasBacktest metricas_bh;         

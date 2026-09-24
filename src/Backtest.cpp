@@ -165,6 +165,8 @@ ResultadoBacktest executarBacktest(
             << std::endl;
     }
 
+    resultado.pesos_finais = peso_atual;
+
     resultado.metricas_bh = calcularMetricas(
         resultado.retornos_bh,
         resultado.retornos_cdi,

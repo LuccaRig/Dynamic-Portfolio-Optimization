@@ -48,6 +48,23 @@ void imprimirRelatorio(
     
     std::cout << std::left << std::setw(25) << "Caixa inicial:" 
               << std::right << std::setw(6) << (1.0 - soma_pesos_init) * 100.0 << "%\n";
+
+    std::cout
+        << "\n--- CARTEIRA FINAL (PESOS) ---\n";
+    double soma_pesos_final = 0.0;
+    
+    for (size_t i = 0; i < resultado.pesos_finais.size(); ++i) {
+        std::string nome = (i < resultado.nomes_ativos.size()) 
+                           ? resultado.nomes_ativos[i] 
+                           : ("Ativo " + std::to_string(i));
+
+        std::cout << std::left << std::setw(25) << nome + ":" 
+                  << std::right << std::setw(6) << resultado.pesos_finais[i] * 100.0 << "%\n";
+                  
+        soma_pesos_final += resultado.pesos_finais[i];
+    }
+    std::cout << std::left << std::setw(25) << "Caixa final:" 
+              << std::right << std::setw(6) << (1.0 - soma_pesos_final) * 100.0 << "%\n";
     
     std::cout
         << "\n--- RETORNO (MPC vs. BUY & HOLD) ---\n"
