@@ -9,9 +9,9 @@ class Mercado;
 class DifferentialEvolution;
 
 struct ConfigBacktest {
-    int janela_estatistica = 252;
+    int janela_estatistica = 63;
     int horizonte_mpc = 5;
-    double max_turnover = 0.10;
+    double max_turnover = 0.30;
     int dias_ano = 252;
 };
 

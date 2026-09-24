@@ -49,11 +49,6 @@ int main()
     // 3. Configuracao do backtest
     ConfigBacktest config;
 
-    config.janela_estatistica = 252;
-    config.horizonte_mpc = 5;
-    config.max_turnover = 0.10;
-    config.dias_ano = 252;
-
     // 4. Custos
     ParametrosCusto params_custo;
 
