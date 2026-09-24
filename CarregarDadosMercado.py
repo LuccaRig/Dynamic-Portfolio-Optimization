@@ -8,7 +8,7 @@ tickers_bdrs  = ["AAPL34.SA", "MSFT34.SA", "NVDC34.SA", "GOGL34.SA", "TSMC34.SA"
 todos_os_ativos = tickers_acoes + tickers_bdrs
 
 print("Baixando dados de ações e BDRs do Yahoo Finance...")
-dados_mercado = yf.download(todos_os_ativos, period="3y", interval="1d")['Close']
+dados_mercado = yf.download(todos_os_ativos, period="10y", interval="1d")['Close']
 dados_mercado = dados_mercado.dropna()
 
 # 2. Baixar a Taxa CDI Diária do Banco Central do Brasil

@@ -133,7 +133,8 @@ MetricasBacktest calcularMetricas(
 
     // 1. Calcular retornos líquidos descontando o turnover e as taxas da B3
     // Taxa B3 total: 0,0050% (negociação) + 0,0180% (liquidação) = 0,0230% (0.00023)
-    const double taxa_b3 = 0.00023; 
+    // Taxa Total por Giro = 0,00023(B3) + 0,00030(Spread)
+    const double taxa_b3 = 0.00053; 
     std::vector<double> retornos_liquidos = retornos_portfolio;
 
     for (size_t i = 0; i < retornos_liquidos.size(); ++i) {
