@@ -124,13 +124,7 @@ onde $c$ representa o retorno do CDI.
 
 Para cenários históricos, o retorno do portfólio é calculado de forma equivalente:
 
-$$
-R_p^{(s)}
-=
-w^T r^{(s)}
-+
-(1-\mathbf{1}^Tw)c^{(s)}
-$$
+$$ R_p^{(s)} = w^T r^{(s)} + (1-\mathbf{1}^Tw)c^{(s)} $$
 
 ---
 
@@ -209,19 +203,11 @@ $$
 
 O problema de otimização é:
 
-$$
-U_t^*
-=
-\arg\min_{U_t} J(U_t)
-$$
+$$ U_t^* = \arg\min_{U_t} J(U_t) $$
 
 A sequência completa é otimizada, mas apenas o primeiro controle é aplicado:
 
-$$
-w_{t+1}
-=
-\mathcal{R}(w_t+\Delta w_t^*)
-$$
+$$ w_{t+1} = \mathcal{R}(w_t+\Delta w_t^*) $$
 
 No período seguinte, o problema é resolvido novamente utilizando os novos pesos e novos dados de mercado.
 
