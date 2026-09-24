@@ -101,11 +101,7 @@ $$
 A matriz de covariância dos ativos é:
 
 $$
-\Sigma_{ij}
-=
-\frac{1}{L-1}
-\sum_{k=1}^{L}
-(r_{i,k}-\mu_i)(r_{j,k}-\mu_j)
+\Sigma_{ij} = \frac{1}{L-1}\sum_{k=1}^{L}(r_{i,k}-\mu_i)(r_{j,k}-\mu_j)
 $$
 
 Para um portfólio com pesos $w$, a variância é:
@@ -122,11 +118,7 @@ Quanto maior $\sigma_p^2$, maior a dispersão esperada dos retornos do portfóli
 
 Como parte do capital pode permanecer em CDI, o retorno esperado do portfólio é:
 
-$$
-R_p =
-w^T\mu +
-(1-\mathbf{1}^Tw)c
-$$
+$$ R_p = w^T\mu + (1-\mathbf{1}^Tw)c $$
 
 onde $c$ representa o retorno do CDI.
 
