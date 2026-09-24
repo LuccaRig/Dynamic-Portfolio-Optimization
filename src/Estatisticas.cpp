@@ -131,16 +131,28 @@ MetricasBacktest calcularMetricas(
     if (retornos_portfolio.empty())
         return m;
 
-    m.media_diaria = media(retornos_portfolio);
-    m.volatilidade_diaria = desvioPadrao(retornos_portfolio);
-    m.retorno_acumulado = retornoAcumulado(retornos_portfolio);
+    // 1. Calcular retornos líquidos descontando o turnover e as taxas da B3
+    // Taxa B3 total: 0,0050% (negociação) + 0,0180% (liquidação) = 0,0230% (0.00023)
+    const double taxa_b3 = 0.00023; 
+    std::vector<double> retornos_liquidos = retornos_portfolio;
+
+    for (size_t i = 0; i < retornos_liquidos.size(); ++i) {
+        double t = (i < turnovers.size()) ? turnovers[i] : 0.0;
+        // Subtrai o custo do turnover do retorno do período
+        retornos_liquidos[i] -= (t * taxa_b3); 
+    }
+
+    // 2. Utilizar os retornos líquidos para todas as métricas de desempenho
+    m.media_diaria = media(retornos_liquidos);
+    m.volatilidade_diaria = desvioPadrao(retornos_liquidos);
+    m.retorno_acumulado = retornoAcumulado(retornos_liquidos);
     m.retorno_cdi_acumulado = retornoAcumulado(retornos_cdi);
 
     m.retorno_anualizado =
         std::pow(
             1.0 + m.retorno_acumulado,
             static_cast<double>(dias_ano) /
-            static_cast<double>(retornos_portfolio.size())
+            static_cast<double>(retornos_liquidos.size())
         ) - 1.0;
 
     m.volatilidade_anualizada =
@@ -150,12 +162,12 @@ MetricasBacktest calcularMetricas(
     double media_excesso_cdi = 0.0;
 
     const size_t n = std::min(
-        retornos_portfolio.size(),
+        retornos_liquidos.size(),
         retornos_cdi.size()
     );
 
     for (size_t i = 0; i < n; ++i)
-        media_excesso_cdi += retornos_portfolio[i] - retornos_cdi[i];
+        media_excesso_cdi += retornos_liquidos[i] - retornos_cdi[i];
 
     if (n > 0)
         media_excesso_cdi /= static_cast<double>(n);
@@ -166,9 +178,9 @@ MetricasBacktest calcularMetricas(
             std::sqrt(static_cast<double>(dias_ano));
     }
 
-    m.drawdown_maximo = maxDrawdown(retornos_portfolio);
-    m.var_95 = VaR95(retornos_portfolio);
-    m.cvar_95 = CVaR95(retornos_portfolio);
+    m.drawdown_maximo = maxDrawdown(retornos_liquidos);
+    m.var_95 = VaR95(retornos_liquidos);
+    m.cvar_95 = CVaR95(retornos_liquidos);
 
     m.turnover_medio = media(turnovers);
 
@@ -178,7 +190,7 @@ MetricasBacktest calcularMetricas(
 
     size_t dias_positivos = 0;
 
-    for (double r : retornos_portfolio) {
+    for (double r : retornos_liquidos) {
         if (r > 0.0)
             ++dias_positivos;
     }
@@ -186,7 +198,7 @@ MetricasBacktest calcularMetricas(
     m.percentual_dias_positivos =
         100.0 *
         static_cast<double>(dias_positivos) /
-        static_cast<double>(retornos_portfolio.size());
+        static_cast<double>(retornos_liquidos.size());
 
     m.excesso_cdi =
         m.retorno_acumulado - m.retorno_cdi_acumulado;
