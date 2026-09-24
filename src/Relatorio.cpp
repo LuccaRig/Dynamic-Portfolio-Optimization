@@ -9,6 +9,7 @@ void imprimirRelatorio(
     double cvar_alpha)
 {
     const auto& m = resultado.metricas;
+    const auto& mbh = resultado.metricas_bh;
 
     if (resultado.retornos_portfolio.empty())
         return;
@@ -27,6 +28,41 @@ void imprimirRelatorio(
         << "Dias simulados             : "
         << resultado.retornos_portfolio.size()
         << std::endl;
+    
+    std::cout
+        << "\n--- RETORNO (MPC vs. BUY & HOLD) ---\n"
+        << "Retorno medio diario       : "
+        << m.media_diaria * 100.0 << "% (B&H: " << mbh.media_diaria * 100.0 << "%)\n"
+        << "Retorno acumulado          : "
+        << m.retorno_acumulado * 100.0 << "% (B&H: " << mbh.retorno_acumulado * 100.0 << "%)\n"
+        << "Retorno anualizado         : "
+        << m.retorno_anualizado * 100.0 << "% (B&H: " << mbh.retorno_anualizado * 100.0 << "%)\n"
+        << "Dias positivos             : "
+        << m.percentual_dias_positivos << "% (B&H: " << mbh.percentual_dias_positivos << "%)\n";
+
+    std::cout
+        << "\n--- RISCO (MPC vs. BUY & HOLD) ---\n"
+        << "Volatilidade diaria        : "
+        << m.volatilidade_diaria * 100.0 << "% (B&H: " << mbh.volatilidade_diaria * 100.0 << "%)\n"
+        << "Volatilidade anualizada    : "
+        << m.volatilidade_anualizada * 100.0 << "% (B&H: " << mbh.volatilidade_anualizada * 100.0 << "%)\n"
+        << "Sharpe                     : "
+        << m.sharpe << " (B&H: " << mbh.sharpe << ")\n"
+        << "Max Drawdown               : "
+        << m.drawdown_maximo * 100.0 << "% (B&H: " << mbh.drawdown_maximo * 100.0 << "%)\n"
+        << "VaR 95% diario             : "
+        << m.var_95 * 100.0 << "% (B&H: " << mbh.var_95 * 100.0 << "%)\n"
+        << "CVaR 95% diario            : "
+        << m.cvar_95 * 100.0 << "% (B&H: " << mbh.cvar_95 * 100.0 << "%)\n";
+
+    std::cout
+        << "\n--- CDI ---\n"
+        << "CDI acumulado              : "
+        << m.retorno_cdi_acumulado * 100.0 << "%\n"
+        << "Excesso sobre CDI (MPC)    : "
+        << m.excesso_cdi * 100.0 << "%\n"
+        << "Excesso sobre CDI (B&H)    : "
+        << mbh.excesso_cdi * 100.0 << "%\n";
 
     std::cout
         << "\n--- RETORNO ---\n"

@@ -18,9 +18,10 @@ struct ConfigBacktest {
 struct ResultadoBacktest {
     std::vector<double> retornos_portfolio;
     std::vector<double> retornos_cdi;
+    std::vector<double> retornos_bh;     
     std::vector<double> turnovers;
-
     MetricasBacktest metricas;
+    MetricasBacktest metricas_bh;         
 };
 
 ResultadoBacktest executarBacktest(
