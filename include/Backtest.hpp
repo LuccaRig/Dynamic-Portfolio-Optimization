@@ -12,7 +12,7 @@ class DifferentialEvolution;
 struct ConfigBacktest {
     int janela_estatistica = 63;
     int horizonte_mpc = 5;
-    double max_turnover = 1.0;
+    double max_turnover = 0.7;
     int dias_ano = 252;
 };
 
