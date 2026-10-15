@@ -15,7 +15,7 @@ cdi_log = []
 pesos_iniciais = {}
 lendo_pesos_iniciais = False
 
-with open("results0-t5.txt", "r", encoding="utf-8") as f:
+with open("results0-t1.txt", "r", encoding="utf-8") as f:
   for line in f:
     # Extrai o log diário do MPC
     match = re.search(
