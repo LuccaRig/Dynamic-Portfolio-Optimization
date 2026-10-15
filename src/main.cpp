@@ -53,20 +53,9 @@ int main()
     // 4. Custos
     ParametrosCusto params_custo;
 
-    params_custo.alpha = 1.0;
-    params_custo.beta = 0.5;
-    params_custo.gamma = 0.8;
-    params_custo.eta = 0.1;
-    params_custo.cvar_alpha = 0.95;
-
     // 5. Evolucao Diferencial
     ParametrosDE params_de;
-
-    params_de.tamanho_populacao = 60;
-    params_de.max_geracoes = 40;
-    params_de.F = 0.7;
-    params_de.CR = 0.9;
-
+    
     DifferentialEvolution de(
         params_de,
         params_custo
