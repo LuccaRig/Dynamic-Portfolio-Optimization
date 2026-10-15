@@ -54,7 +54,7 @@ int main()
     ParametrosCusto params_custo;
 
     // printar params_custo
-    std::cout << "\n=== PARAMETROS DA FUNCAO OBJETIVO ==="
+    std::cout << "\n=== PARAMETROS DA FUNCAO OBJETIVO === \n"
               << "alpha: " << params_custo.alpha << "\n"
               << "beta: " << params_custo.beta << "\n"
               << "gama: " << params_custo.gamma << "\n"
@@ -63,16 +63,15 @@ int main()
               << std::endl;
 
 
-
-    std::cout << "\n=== PARAMETROS DA EVOLUCAO DIFERENCIAL ==="
-              << "tamanho_populacao: " << params_custo.alpha << "\n"
-              << "max_geracoes: " << params_custo.beta << "\n"
-              << "F: " << params_custo.gamma << "\n"
-              << "CR: " << params_custo.eta
-              << std::endl;
-
     // 5. Evolucao Diferencial
     ParametrosDE params_de;
+
+    std::cout << "\n=== PARAMETROS DA EVOLUCAO DIFERENCIAL === \n"
+              << "tamanho_populacao: " << params_de.tamanho_populacao << "\n"
+              << "max_geracoes: " << params_de.max_geracoes << "\n"
+              << "F: " << params_de.F << "\n"
+              << "CR: " << params_de.CR
+              << std::endl;
     
     DifferentialEvolution de(
         params_de,
