@@ -53,6 +53,24 @@ int main()
     // 4. Custos
     ParametrosCusto params_custo;
 
+    // printar params_custo
+    std::cout << "\n=== PARAMETROS DA FUNCAO OBJETIVO ==="
+              << "alpha: " << params_custo.alpha << "\n"
+              << "beta: " << params_custo.beta << "\n"
+              << "gama: " << params_custo.gamma << "\n"
+              << "eta (custo da transacao): " << params_custo.eta << "\n"
+              << "cvar_alpha: " << params_custo.cvar_alpha
+              << std::endl;
+
+
+
+    std::cout << "\n=== PARAMETROS DA EVOLUCAO DIFERENCIAL ==="
+              << "tamanho_populacao: " << params_custo.alpha << "\n"
+              << "max_geracoes: " << params_custo.beta << "\n"
+              << "F: " << params_custo.gamma << "\n"
+              << "CR: " << params_custo.eta
+              << std::endl;
+
     // 5. Evolucao Diferencial
     ParametrosDE params_de;
     

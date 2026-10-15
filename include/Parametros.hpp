@@ -5,7 +5,7 @@ struct ParametrosCusto {
     double alpha = 1.0;      // retorno
     double beta  = 0.5;      // CVaR
     double gamma = 0.8;      // variância
-    double eta   = 0.1;      // custo de transação
+    double eta   = 0.5;      // custo de transação
     double cvar_alpha = 0.95;
 };
 
