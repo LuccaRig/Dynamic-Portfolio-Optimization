@@ -10,7 +10,7 @@ struct ParametrosCusto {
 };
 
 struct ParametrosDE {
-    int tamanho_populacao = 120;
+    int tamanho_populacao = 100;
     int max_geracoes = 40;
     double F = 0.7;
     double CR = 0.9;

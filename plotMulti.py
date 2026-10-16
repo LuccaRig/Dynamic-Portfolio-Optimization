@@ -15,11 +15,10 @@ cdi_log = []
 pesos_iniciais = {}
 lendo_pesos_iniciais = False
 
-with open("results0-t1.txt", "r", encoding="utf-8") as f:
+with open("results4-t0.txt", "r", encoding="utf-8") as f:
   for line in f:
-    # Extrai o log diário do MPC
     match = re.search(
-        r"\[Dia (\d+)\] CDI=([\d.-]+)% \| PnL=([\d.-]+)% \| Turnover=([\d.-]+)%",
+        r"\[Dia (\d+)\]\s+CDI=([\d.-]+)%\s*\|\s+PnL=([\d.-]+)%",
         line,
     )
     if match:
@@ -30,7 +29,6 @@ with open("results0-t1.txt", "r", encoding="utf-8") as f:
       pnl_mpc.append(pnl_val)
       cdi_log.append(cdi_val)
 
-    # Identifica os pesos iniciais gerados pelo DE no log
     if "--- CARTEIRA INICIAL (PESOS) ---" in line:
       lendo_pesos_iniciais = True
       continue
@@ -63,9 +61,9 @@ for r_t in retornos_periodo:
   pnl_dia = np.sum(w_bh_eq * r_t)
   pnl_bh_iguais.append(pnl_dia)
   w_bh_eq = w_bh_eq * (1.0 + r_t)
-  w_bh_eq /= np.sum(w_bh_eq)  # Renormaliza
+  w_bh_eq /= np.sum(w_bh_eq)
 
-# 5. Estratégia B&H com os pesos iniciais do DE (lidos do log)
+# 5. Estratégia B&H com os pesos iniciais do DE
 w_de_list = []
 for k, v in pesos_iniciais.items():
   if k != "Caixa inicial":
@@ -78,7 +76,6 @@ else:
 
 pnl_bh_de = []
 w_bh_de = pesos_de_inicial.copy()
-caixa_inicial = pesos_iniciais.get("Caixa inicial", 0.0)
 
 for idx, r_t in enumerate(retornos_periodo):
   c_hoje = cdi_periodo[idx]
@@ -104,7 +101,33 @@ acum_bh_de = calcular_acumulado(pnl_bh_de)
 acum_bh_eq = calcular_acumulado(pnl_bh_iguais)
 acum_cdi = calcular_acumulado(cdi_periodo)
 
-# 7. Plotagem dos Gráficos Comparativos (Corrigido)
+
+# --- NOVAS FUNÇÕES DE RISCO E MÉTRICAS ---
+def calcular_metricas(retornos, cdi_retornos):
+  retornos = np.array(retornos)
+  # Volatilidade Anualizada (considerando 252 dias úteis)
+  vol_anual = np.std(retornos, ddof=1) * np.sqrt(252) * 100
+
+  # Maximum Drawdown (DD Máximo)
+  acumulado = np.cumprod(1.0 + retornos)
+  pico = np.maximum.accumulate(acumulado)
+  drawdown = (acumulado - pico) / pico
+  max_dd = np.min(drawdown) * 100
+
+  # Índice Sharpe (assumindo CDI médio diário convertido para anualizado ou taxa livre de risco)
+  retorno_medio_anual = np.mean(retornos) * 252
+  cdi_medio_anual = np.mean(cdi_retornos) * 252
+  vol_decimal = np.std(retornos, ddof=1) * np.sqrt(252)
+  sharpe = (
+      (retorno_medio_anual - cdi_medio_anual) / vol_decimal
+      if vol_decimal > 0
+      else 0.0
+  )
+
+  return vol_anual, max_dd, sharpe
+
+
+# 7. Plotagem dos Gráficos Comparativos
 plt.figure(figsize=(12, 6))
 plt.plot(
     dias_mpc,
@@ -144,11 +167,38 @@ plt.title(
 plt.xlabel("Dias de Simulação (Índice Temporal)", fontsize=12)
 plt.ylabel("Retorno Acumulado (%)", fontsize=12)
 plt.legend(fontsize=11)
-plt.grid(
-    True, linestyle="--", alpha=0.6
-)  # Corrigido de "alpha" para "--"
+plt.grid(True, linestyle="--", alpha=0.6)
 plt.tight_layout()
 
 plt.savefig("comparativo_estrategias.png", dpi=300)
 print("Gráfico salvo com sucesso como 'comparativo_estrategias.png'!")
 plt.show()
+
+# 8. Cálculo e Impressão de Retornos, Volatilidade, Drawdown e Sharpe
+vol_mpc, dd_mpc, sharpe_mpc = calcular_metricas(pnl_mpc, cdi_periodo)
+vol_bh_de, dd_bh_de, sharpe_bh_de = calcular_metricas(pnl_bh_de, cdi_periodo)
+vol_bh_eq, dd_bh_eq, sharpe_bh_eq = calcular_metricas(
+    pnl_bh_iguais, cdi_periodo
+)
+vol_cdi, dd_cdi, sharpe_cdi = calcular_metricas(cdi_periodo, cdi_periodo)
+
+print("\n" + "=" * 65)
+print(f"{'ESTRATÉGIA':<32} | {'RETORNO':<8} | {'VOL (a.a.)':<10} | {'MAX DD':<8} | {'SHARPE':<6}")
+print("-" * 65)
+print(
+    f"{'MPC-DE (Otimizado)':<32} | {acum_mpc[-1]*100:>6.2f}% |"
+    f" {vol_mpc:>8.2f}% | {dd_mpc:>6.2f}% | {sharpe_mpc:>6.2f}"
+)
+print(
+    f"{'Buy & Hold (Pesos Iniciais DE)':<32} | {acum_bh_de[-1]*100:>6.2f}% |"
+    f" {vol_bh_de:>8.2f}% | {dd_bh_de:>6.2f}% | {sharpe_bh_de:>6.2f}"
+)
+print(
+    f"{'Buy & Hold (Pesos Iguais 1/n)':<32} | {acum_bh_eq[-1]*100:>6.2f}% |"
+    f" {vol_bh_eq:>8.2f}% | {dd_bh_eq:>6.2f}% | {sharpe_bh_eq:>6.2f}"
+)
+print(
+    f"{'Taxa Livre de Risco (CDI)':<32} | {acum_cdi[-1]*100:>6.2f}% |"
+    f" {vol_cdi:>8.2f}% | {dd_cdi:>6.2f}% | {sharpe_cdi:>6.2f}"
+)
+print("=" * 65)
