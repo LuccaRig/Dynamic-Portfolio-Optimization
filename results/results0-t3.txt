@@ -1,0 +1,779 @@
+=== INICIANDO SISTEMA MPC COM EVOLUCAO DIFERENCIAL (OpenMP) ===
+Dados carregados! Dias disponiveis: 746 | Ativos: 12
+
+=== PARAMETROS DA FUNCAO OBJETIVO === 
+alpha: 3
+beta: 0.5
+gama: 0.1
+eta (custo da transacao): 0.1
+cvar_alpha: 0.95
+
+=== PARAMETROS DA EVOLUCAO DIFERENCIAL === 
+tamanho_populacao: 200
+max_geracoes: 40
+F: 0.7
+CR: 0.9
+
+Iniciando simulacao de rebalanceamento via MPC...
+[Dia 63] CDI=0.043739% | PnL=0.0594294% | Turnover=45.5102%
+[Dia 64] CDI=0.043739% | PnL=0.291549% | Turnover=40.0284%
+[Dia 65] CDI=0.043739% | PnL=-0.0823848% | Turnover=38.2781%
+[Dia 66] CDI=0.043739% | PnL=-0.775248% | Turnover=22.5038%
+[Dia 67] CDI=0.043739% | PnL=-0.0508491% | Turnover=39.5701%
+[Dia 68] CDI=0.043739% | PnL=1.29784% | Turnover=40.278%
+[Dia 69] CDI=0.043739% | PnL=0.0822957% | Turnover=33.56%
+[Dia 70] CDI=0.043739% | PnL=-0.0626453% | Turnover=46.0005%
+[Dia 71] CDI=0.043739% | PnL=-0.067868% | Turnover=43.8598%
+[Dia 72] CDI=0.043739% | PnL=-0.0799762% | Turnover=35.5681%
+[Dia 73] CDI=0.043739% | PnL=0.685634% | Turnover=26.5111%
+[Dia 74] CDI=0.043739% | PnL=-0.563596% | Turnover=42.5225%
+[Dia 75] CDI=0.043739% | PnL=-0.420765% | Turnover=25.9981%
+[Dia 76] CDI=0.043739% | PnL=0.532747% | Turnover=42.6536%
+[Dia 77] CDI=0.043739% | PnL=0.255565% | Turnover=44.6745%
+[Dia 78] CDI=0.043739% | PnL=0.042851% | Turnover=38.2578%
+[Dia 79] CDI=0.043739% | PnL=0.381196% | Turnover=21.5357%
+[Dia 80] CDI=0.043739% | PnL=-0.56625% | Turnover=51.6165%
+[Dia 81] CDI=0.043739% | PnL=0.0203194% | Turnover=53.2478%
+[Dia 82] CDI=0.043739% | PnL=0.216848% | Turnover=28.6228%
+[Dia 83] CDI=0.043739% | PnL=0.261562% | Turnover=28.4216%
+[Dia 84] CDI=0.043739% | PnL=-0.908585% | Turnover=32.3503%
+[Dia 85] CDI=0.043739% | PnL=-0.609155% | Turnover=38.7112%
+[Dia 86] CDI=0.041957% | PnL=0.72206% | Turnover=32.4966%
+[Dia 87] CDI=0.041957% | PnL=-0.283854% | Turnover=40.1494%
+[Dia 88] CDI=0.041957% | PnL=0.473552% | Turnover=39.8775%
+[Dia 89] CDI=0.041957% | PnL=0.290655% | Turnover=50.292%
+[Dia 90] CDI=0.041957% | PnL=1.54724% | Turnover=46.8713%
+[Dia 91] CDI=0.041957% | PnL=0.502502% | Turnover=63.9322%
+[Dia 92] CDI=0.041957% | PnL=0.151636% | Turnover=41.258%
+[Dia 93] CDI=0.041957% | PnL=-0.942631% | Turnover=34.705%
+[Dia 94] CDI=0.041957% | PnL=0.244825% | Turnover=48.8514%
+[Dia 95] CDI=0.041957% | PnL=0.0558231% | Turnover=43.8298%
+[Dia 96] CDI=0.041957% | PnL=0.0548844% | Turnover=51.6206%
+[Dia 97] CDI=0.041957% | PnL=-0.557964% | Turnover=36.3788%
+[Dia 98] CDI=0.041957% | PnL=0.497762% | Turnover=32.7684%
+[Dia 99] CDI=0.041957% | PnL=2.19111% | Turnover=36.7302%
+[Dia 100] CDI=0.041957% | PnL=0.388097% | Turnover=63.7168%
+[Dia 101] CDI=0.041957% | PnL=0.102453% | Turnover=32.4437%
+[Dia 102] CDI=0.041957% | PnL=0.0676341% | Turnover=58.7206%
+[Dia 103] CDI=0.041957% | PnL=-0.462297% | Turnover=47.7397%
+[Dia 104] CDI=0.041957% | PnL=0.0805101% | Turnover=41.1301%
+[Dia 105] CDI=0.041957% | PnL=1.65533% | Turnover=37.9921%
+[Dia 106] CDI=0.041957% | PnL=0.488319% | Turnover=42.4318%
+[Dia 107] CDI=0.041957% | PnL=-0.206113% | Turnover=33.7911%
+[Dia 108] CDI=0.041957% | PnL=1.44402% | Turnover=68.8097%
+[Dia 109] CDI=0.041957% | PnL=1.94806% | Turnover=27.2157%
+[Dia 110] CDI=0.041957% | PnL=-1.54297% | Turnover=44.1618%
+[Dia 111] CDI=0.041957% | PnL=-1.43088% | Turnover=31.1604%
+[Dia 112] CDI=0.041957% | PnL=3.76679% | Turnover=23.0901%
+[Dia 113] CDI=0.041957% | PnL=-1.08774% | Turnover=40.0735%
+[Dia 114] CDI=0.041957% | PnL=-1.54672% | Turnover=30.6504%
+[Dia 115] CDI=0.041957% | PnL=-0.323077% | Turnover=43.5763%
+[Dia 116] CDI=0.041957% | PnL=1.33137% | Turnover=39.9693%
+[Dia 117] CDI=0.041957% | PnL=-0.251588% | Turnover=35.3226%
+[Dia 118] CDI=0.041957% | PnL=0.639569% | Turnover=45.0037%
+[Dia 119] CDI=0.040168% | PnL=0.0434085% | Turnover=41.2714%
+[Dia 120] CDI=0.040168% | PnL=0.829995% | Turnover=46.0562%
+[Dia 121] CDI=0.040168% | PnL=-0.593675% | Turnover=41.6403%
+[Dia 122] CDI=0.040168% | PnL=-0.556895% | Turnover=45.1304%
+[Dia 123] CDI=0.040168% | PnL=-0.425036% | Turnover=41.7232%
+[Dia 124] CDI=0.040168% | PnL=0.700854% | Turnover=37.3374%
+[Dia 125] CDI=0.040168% | PnL=1.30041% | Turnover=27.7301%
+[Dia 126] CDI=0.040168% | PnL=-0.344426% | Turnover=58.1639%
+[Dia 127] CDI=0.040168% | PnL=-0.421821% | Turnover=42.2363%
+[Dia 128] CDI=0.040168% | PnL=-0.90031% | Turnover=36.2429%
+[Dia 129] CDI=0.040168% | PnL=0.809863% | Turnover=40.2037%
+[Dia 130] CDI=0.040168% | PnL=0.397238% | Turnover=44.2782%
+[Dia 131] CDI=0.040168% | PnL=0.292699% | Turnover=51.9858%
+[Dia 132] CDI=0.040168% | PnL=0.713422% | Turnover=28.8666%
+[Dia 133] CDI=0.040168% | PnL=1.20719% | Turnover=41.0543%
+[Dia 134] CDI=0.040168% | PnL=-0.95816% | Turnover=34.3841%
+[Dia 135] CDI=0.040168% | PnL=-0.58897% | Turnover=34.2526%
+[Dia 136] CDI=0.040168% | PnL=1.19692% | Turnover=35.3126%
+[Dia 137] CDI=0.040168% | PnL=-1.34572% | Turnover=44.6107%
+[Dia 138] CDI=0.040168% | PnL=0.630013% | Turnover=23.4134%
+[Dia 139] CDI=0.040168% | PnL=-3.11079% | Turnover=33.2136%
+[Dia 140] CDI=0.040168% | PnL=0.811749% | Turnover=52.8904%
+[Dia 141] CDI=0.040168% | PnL=0.304669% | Turnover=38.0222%
+[Dia 142] CDI=0.040168% | PnL=0.371742% | Turnover=33.3205%
+[Dia 143] CDI=0.040168% | PnL=1.74371% | Turnover=45.2822%
+[Dia 144] CDI=0.040168% | PnL=0.22633% | Turnover=42.588%
+[Dia 145] CDI=0.040168% | PnL=0.178918% | Turnover=38.3523%
+[Dia 146] CDI=0.040168% | PnL=0.69153% | Turnover=64.0152%
+[Dia 147] CDI=0.040168% | PnL=-0.489757% | Turnover=43.8867%
+[Dia 148] CDI=0.040168% | PnL=0.733332% | Turnover=38.0807%
+[Dia 149] CDI=0.040168% | PnL=0.430813% | Turnover=50.4634%
+[Dia 150] CDI=0.040168% | PnL=0.570877% | Turnover=36.7789%
+[Dia 151] CDI=0.040168% | PnL=0.601827% | Turnover=42.472%
+[Dia 152] CDI=0.03927% | PnL=-0.416529% | Turnover=50.0263%
+[Dia 153] CDI=0.03927% | PnL=1.02895% | Turnover=49.6799%
+[Dia 154] CDI=0.03927% | PnL=0.262144% | Turnover=47.4261%
+[Dia 155] CDI=0.03927% | PnL=0.559529% | Turnover=52.669%
+[Dia 156] CDI=0.03927% | PnL=0.0228605% | Turnover=22.8904%
+[Dia 157] CDI=0.03927% | PnL=-0.165708% | Turnover=40.0155%
+[Dia 158] CDI=0.03927% | PnL=-0.254247% | Turnover=51.8908%
+[Dia 159] CDI=0.03927% | PnL=0.896206% | Turnover=48.1793%
+[Dia 160] CDI=0.03927% | PnL=0.47381% | Turnover=53.4794%
+[Dia 161] CDI=0.03927% | PnL=-0.162895% | Turnover=33.8778%
+[Dia 162] CDI=0.03927% | PnL=-0.589207% | Turnover=45.1463%
+[Dia 163] CDI=0.03927% | PnL=-0.130701% | Turnover=29.9779%
+[Dia 164] CDI=0.03927% | PnL=1.77035% | Turnover=42.8352%
+[Dia 165] CDI=0.03927% | PnL=0.35845% | Turnover=46.2553%
+[Dia 166] CDI=0.03927% | PnL=-0.11854% | Turnover=41.8388%
+[Dia 167] CDI=0.03927% | PnL=-1.18111% | Turnover=31.4861%
+[Dia 168] CDI=0.03927% | PnL=1.54429% | Turnover=38.7644%
+[Dia 169] CDI=0.03927% | PnL=0.887053% | Turnover=24.1964%
+[Dia 170] CDI=0.03927% | PnL=1.83379% | Turnover=24.8042%
+[Dia 171] CDI=0.03927% | PnL=-0.129886% | Turnover=31.1223%
+[Dia 172] CDI=0.03927% | PnL=0.703857% | Turnover=49.8189%
+[Dia 173] CDI=0.03927% | PnL=0.374311% | Turnover=44.1759%
+[Dia 174] CDI=0.03927% | PnL=0.321578% | Turnover=40.3336%
+[Dia 175] CDI=0.03927% | PnL=1.45473% | Turnover=39.4874%
+[Dia 176] CDI=0.03927% | PnL=-0.157232% | Turnover=56.6416%
+[Dia 177] CDI=0.03927% | PnL=-0.0477955% | Turnover=31.0761%
+[Dia 178] CDI=0.03927% | PnL=1.61371% | Turnover=28.1796%
+[Dia 179] CDI=0.03927% | PnL=-0.325749% | Turnover=18.7139%
+[Dia 180] CDI=0.03927% | PnL=0.783007% | Turnover=30.6418%
+[Dia 181] CDI=0.03927% | PnL=-0.747396% | Turnover=28.7109%
+[Dia 182] CDI=0.03927% | PnL=0.489736% | Turnover=33.8206%
+[Dia 183] CDI=0.03927% | PnL=-2.13353% | Turnover=43.6021%
+[Dia 184] CDI=0.03927% | PnL=1.32587% | Turnover=46.1856%
+[Dia 185] CDI=0.03927% | PnL=0.782165% | Turnover=32.4602%
+[Dia 186] CDI=0.03927% | PnL=-0.0483731% | Turnover=26.2613%
+[Dia 187] CDI=0.03927% | PnL=0.43842% | Turnover=29.5591%
+[Dia 188] CDI=0.03927% | PnL=1.28963% | Turnover=48.2106%
+[Dia 189] CDI=0.03927% | PnL=0.885249% | Turnover=30.5948%
+[Dia 190] CDI=0.03927% | PnL=-0.223848% | Turnover=42.2438%
+[Dia 191] CDI=0.03927% | PnL=-0.613571% | Turnover=36.547%
+[Dia 192] CDI=0.03927% | PnL=-0.00876766% | Turnover=27.5557%
+[Dia 193] CDI=0.03927% | PnL=0.370179% | Turnover=34.5954%
+[Dia 194] CDI=0.03927% | PnL=-0.499778% | Turnover=20.4257%
+[Dia 195] CDI=0.03927% | PnL=0.397679% | Turnover=27.1976%
+[Dia 196] CDI=0.03927% | PnL=-0.835632% | Turnover=46.4712%
+[Dia 197] CDI=0.03927% | PnL=0.368725% | Turnover=24.8544%
+[Dia 198] CDI=0.03927% | PnL=0.645216% | Turnover=43.1305%
+[Dia 199] CDI=0.03927% | PnL=-0.0966891% | Turnover=41.6533%
+[Dia 200] CDI=0.03927% | PnL=-0.326048% | Turnover=40.8762%
+[Dia 201] CDI=0.03927% | PnL=0.40661% | Turnover=26.3357%
+[Dia 202] CDI=0.03927% | PnL=-0.192524% | Turnover=49.8085%
+[Dia 203] CDI=0.03927% | PnL=-0.213616% | Turnover=40.4377%
+[Dia 204] CDI=0.03927% | PnL=0.149296% | Turnover=34.098%
+[Dia 205] CDI=0.03927% | PnL=-0.457229% | Turnover=42.6797%
+[Dia 206] CDI=0.03927% | PnL=-0.777303% | Turnover=41.1416%
+[Dia 207] CDI=0.03927% | PnL=0.672878% | Turnover=31.1273%
+[Dia 208] CDI=0.03927% | PnL=-0.47901% | Turnover=38.0357%
+[Dia 209] CDI=0.03927% | PnL=-1.10604% | Turnover=41.0111%
+[Dia 210] CDI=0.03927% | PnL=2.7809% | Turnover=32.2788%
+[Dia 211] CDI=0.03927% | PnL=-1.09732% | Turnover=43.9529%
+[Dia 212] CDI=0.03927% | PnL=-1.5581% | Turnover=45.5616%
+[Dia 213] CDI=0.03927% | PnL=-1.81123% | Turnover=50.8645%
+[Dia 214] CDI=0.03927% | PnL=-0.882992% | Turnover=34.4864%
+[Dia 215] CDI=0.03927% | PnL=-0.406615% | Turnover=45.0696%
+[Dia 216] CDI=0.03927% | PnL=0.668365% | Turnover=49.8699%
+[Dia 217] CDI=0.03927% | PnL=0.0230864% | Turnover=33.5568%
+[Dia 218] CDI=0.03927% | PnL=0.123997% | Turnover=55.6466%
+[Dia 219] CDI=0.03927% | PnL=1.04087% | Turnover=39.7241%
+[Dia 220] CDI=0.03927% | PnL=1.59951% | Turnover=34.962%
+[Dia 221] CDI=0.03927% | PnL=1.08765% | Turnover=52.3817%
+[Dia 222] CDI=0.03927% | PnL=0.318196% | Turnover=28.5215%
+[Dia 223] CDI=0.03927% | PnL=0.494207% | Turnover=37.5259%
+[Dia 224] CDI=0.03927% | PnL=0.45073% | Turnover=37.1801%
+[Dia 225] CDI=0.03927% | PnL=0.164982% | Turnover=28.1534%
+[Dia 226] CDI=0.03927% | PnL=0.332373% | Turnover=46.6557%
+[Dia 227] CDI=0.03927% | PnL=-0.621331% | Turnover=51.4404%
+[Dia 228] CDI=0.03927% | PnL=0.379338% | Turnover=40.2373%
+[Dia 229] CDI=0.03927% | PnL=0.427561% | Turnover=50.3516%
+[Dia 230] CDI=0.03927% | PnL=0.730925% | Turnover=40.1134%
+[Dia 231] CDI=0.03927% | PnL=0.186473% | Turnover=37.6545%
+[Dia 232] CDI=0.03927% | PnL=0.347857% | Turnover=35.1153%
+[Dia 233] CDI=0.03927% | PnL=-0.760494% | Turnover=46.2918%
+[Dia 234] CDI=0.03927% | PnL=-0.767829% | Turnover=28.6926%
+[Dia 235] CDI=0.03927% | PnL=0.128243% | Turnover=41.4136%
+[Dia 236] CDI=0.03927% | PnL=-0.668628% | Turnover=43.9315%
+[Dia 237] CDI=0.03927% | PnL=-0.999055% | Turnover=60.1605%
+[Dia 238] CDI=0.03927% | PnL=0.310132% | Turnover=37.036%
+[Dia 239] CDI=0.03927% | PnL=0.902606% | Turnover=52.8699%
+[Dia 240] CDI=0.03927% | PnL=0.633746% | Turnover=28.3418%
+[Dia 241] CDI=0.03927% | PnL=0.0812922% | Turnover=33.426%
+[Dia 242] CDI=0.03927% | PnL=-0.303266% | Turnover=20.6387%
+[Dia 243] CDI=0.03927% | PnL=-1.12608% | Turnover=23.9362%
+[Dia 244] CDI=0.03927% | PnL=0.0269386% | Turnover=42.1542%
+[Dia 245] CDI=0.03927% | PnL=-0.507634% | Turnover=52.6036%
+[Dia 246] CDI=0.040168% | PnL=-0.0792548% | Turnover=41.4336%
+[Dia 247] CDI=0.040168% | PnL=-0.0582958% | Turnover=54.7982%
+[Dia 248] CDI=0.040168% | PnL=0.351027% | Turnover=46.8663%
+[Dia 249] CDI=0.040168% | PnL=0.0748066% | Turnover=30.3719%
+[Dia 250] CDI=0.040168% | PnL=0.386721% | Turnover=42.4701%
+[Dia 251] CDI=0.040168% | PnL=0.347057% | Turnover=43.8591%
+[Dia 252] CDI=0.040168% | PnL=-0.892612% | Turnover=56.2782%
+[Dia 253] CDI=0.040168% | PnL=-0.429984% | Turnover=28.8234%
+[Dia 254] CDI=0.040168% | PnL=-0.313455% | Turnover=38.9336%
+[Dia 255] CDI=0.040168% | PnL=-0.0625675% | Turnover=43.5448%
+[Dia 256] CDI=0.040168% | PnL=-0.425523% | Turnover=39.7083%
+[Dia 257] CDI=0.040168% | PnL=-0.520511% | Turnover=47.9424%
+[Dia 258] CDI=0.040168% | PnL=0.0104018% | Turnover=41.4694%
+[Dia 259] CDI=0.040168% | PnL=-0.22968% | Turnover=37.6515%
+[Dia 260] CDI=0.040168% | PnL=0.397118% | Turnover=21.4912%
+[Dia 261] CDI=0.040168% | PnL=-0.150069% | Turnover=27.6148%
+[Dia 262] CDI=0.040168% | PnL=0.507878% | Turnover=39.8039%
+[Dia 263] CDI=0.040168% | PnL=0.47831% | Turnover=31.9289%
+[Dia 264] CDI=0.040168% | PnL=0.23337% | Turnover=24.6022%
+[Dia 265] CDI=0.040168% | PnL=0.284041% | Turnover=33.3363%
+[Dia 266] CDI=0.040168% | PnL=-0.583001% | Turnover=23.2512%
+[Dia 267] CDI=0.040168% | PnL=0.30637% | Turnover=36.8474%
+[Dia 268] CDI=0.040168% | PnL=-0.0244046% | Turnover=41.1267%
+[Dia 269] CDI=0.040168% | PnL=0.0159163% | Turnover=39.8742%
+[Dia 270] CDI=0.040168% | PnL=-1.31308% | Turnover=43.8905%
+[Dia 271] CDI=0.040168% | PnL=0.0643685% | Turnover=45.5182%
+[Dia 272] CDI=0.040168% | PnL=0.504049% | Turnover=36.3527%
+[Dia 273] CDI=0.040168% | PnL=-0.261591% | Turnover=48.3162%
+[Dia 274] CDI=0.040168% | PnL=0.4971% | Turnover=60.7077%
+[Dia 275] CDI=0.040168% | PnL=-0.656237% | Turnover=45.9451%
+[Dia 276] CDI=0.040168% | PnL=-1.00721% | Turnover=37.5185%
+[Dia 277] CDI=0.040168% | PnL=0.824943% | Turnover=38.0492%
+[Dia 278] CDI=0.040168% | PnL=0.528533% | Turnover=29.1155%
+[Dia 279] CDI=0.040168% | PnL=0.0884179% | Turnover=39.9731%
+[Dia 280] CDI=0.040168% | PnL=-0.493504% | Turnover=31.9604%
+[Dia 281] CDI=0.041957% | PnL=0.814799% | Turnover=34.8025%
+[Dia 282] CDI=0.041957% | PnL=-1.16216% | Turnover=44.1151%
+[Dia 283] CDI=0.041957% | PnL=-0.424276% | Turnover=42.8334%
+[Dia 284] CDI=0.041957% | PnL=-0.388246% | Turnover=60.2549%
+[Dia 285] CDI=0.041957% | PnL=-0.0691657% | Turnover=33.8251%
+[Dia 286] CDI=0.041957% | PnL=0.323477% | Turnover=38.1321%
+[Dia 287] CDI=0.041957% | PnL=-1.61568% | Turnover=30.6336%
+[Dia 288] CDI=0.041957% | PnL=1.20248% | Turnover=38.569%
+[Dia 289] CDI=0.041957% | PnL=-0.519672% | Turnover=37.8957%
+[Dia 290] CDI=0.041957% | PnL=-0.130831% | Turnover=30.067%
+[Dia 291] CDI=0.041957% | PnL=-0.885829% | Turnover=59.93%
+[Dia 292] CDI=0.041957% | PnL=0.910467% | Turnover=48.4738%
+[Dia 293] CDI=0.041957% | PnL=0.00699004% | Turnover=45.8817%
+[Dia 294] CDI=0.041957% | PnL=-0.603669% | Turnover=40.5025%
+[Dia 295] CDI=0.041957% | PnL=1.24466% | Turnover=53.7019%
+[Dia 296] CDI=0.041957% | PnL=1.17135% | Turnover=31.6395%
+[Dia 297] CDI=0.041957% | PnL=0.600338% | Turnover=58.7127%
+[Dia 298] CDI=0.041957% | PnL=0.652588% | Turnover=40.7225%
+[Dia 299] CDI=0.041957% | PnL=0.123897% | Turnover=39.3509%
+[Dia 300] CDI=0.041957% | PnL=0.10044% | Turnover=31.0086%
+[Dia 301] CDI=0.041957% | PnL=0.414292% | Turnover=47.5502%
+[Dia 302] CDI=0.041957% | PnL=-0.219504% | Turnover=35.9704%
+[Dia 303] CDI=0.041957% | PnL=0.684186% | Turnover=44.6535%
+[Dia 304] CDI=0.045513% | PnL=-1.21363% | Turnover=66.9033%
+[Dia 305] CDI=0.045513% | PnL=-0.222608% | Turnover=37.2343%
+[Dia 306] CDI=0.045513% | PnL=0.878945% | Turnover=46.69%
+[Dia 307] CDI=0.045513% | PnL=0.189219% | Turnover=46.7261%
+[Dia 308] CDI=0.045513% | PnL=-0.615896% | Turnover=41.1128%
+[Dia 309] CDI=0.045513% | PnL=-1.31073% | Turnover=38.5411%
+[Dia 310] CDI=0.045513% | PnL=0.574695% | Turnover=34.6277%
+[Dia 311] CDI=0.045513% | PnL=1.05914% | Turnover=24.0399%
+[Dia 312] CDI=0.045513% | PnL=0.684437% | Turnover=38.5199%
+[Dia 313] CDI=0.045513% | PnL=-0.762416% | Turnover=59.7353%
+[Dia 314] CDI=0.045513% | PnL=-0.523023% | Turnover=46.1454%
+[Dia 315] CDI=0.045513% | PnL=-1.66488% | Turnover=41.102%
+[Dia 316] CDI=0.045513% | PnL=0.393787% | Turnover=29.072%
+[Dia 317] CDI=0.045513% | PnL=1.12576% | Turnover=27.5942%
+[Dia 318] CDI=0.045513% | PnL=-2.8185% | Turnover=70%
+[Dia 319] CDI=0.045513% | PnL=-0.426551% | Turnover=37.744%
+[Dia 320] CDI=0.045513% | PnL=-0.226145% | Turnover=33.2764%
+[Dia 321] CDI=0.045513% | PnL=-1.11072% | Turnover=70%
+[Dia 322] CDI=0.045513% | PnL=-0.238987% | Turnover=48.9124%
+[Dia 323] CDI=0.045513% | PnL=-0.406167% | Turnover=43.9424%
+[Dia 324] CDI=0.045513% | PnL=1.59495% | Turnover=62.2266%
+[Dia 325] CDI=0.045513% | PnL=-0.140043% | Turnover=39.6399%
+[Dia 326] CDI=0.045513% | PnL=1.02639% | Turnover=45.1108%
+[Dia 327] CDI=0.045513% | PnL=0.0968877% | Turnover=41.2011%
+[Dia 328] CDI=0.045513% | PnL=0.141635% | Turnover=18.4737%
+[Dia 329] CDI=0.045513% | PnL=0.0982033% | Turnover=47.571%
+[Dia 330] CDI=0.045513% | PnL=-0.494901% | Turnover=38.5432%
+[Dia 331] CDI=0.045513% | PnL=0.233933% | Turnover=41.6908%
+[Dia 332] CDI=0.045513% | PnL=-2.76978% | Turnover=38.82%
+[Dia 333] CDI=0.045513% | PnL=0.688523% | Turnover=38.5572%
+[Dia 334] CDI=0.045513% | PnL=-0.0729494% | Turnover=42.4408%
+[Dia 335] CDI=0.049037% | PnL=1.5272% | Turnover=28.0176%
+[Dia 336] CDI=0.049037% | PnL=0.299735% | Turnover=45.7934%
+[Dia 337] CDI=0.049037% | PnL=-0.790725% | Turnover=30.1899%
+[Dia 338] CDI=0.049037% | PnL=-1.50604% | Turnover=52.7294%
+[Dia 339] CDI=0.049037% | PnL=0.0636241% | Turnover=24.7925%
+[Dia 340] CDI=0.049037% | PnL=-0.0393126% | Turnover=44.505%
+[Dia 341] CDI=0.049037% | PnL=-0.649909% | Turnover=33.8555%
+[Dia 342] CDI=0.049037% | PnL=0.674046% | Turnover=32.8434%
+[Dia 343] CDI=0.049037% | PnL=0.608111% | Turnover=46.6103%
+[Dia 344] CDI=0.049037% | PnL=-0.389014% | Turnover=49.7025%
+[Dia 345] CDI=0.049037% | PnL=0.95317% | Turnover=33.8486%
+[Dia 346] CDI=0.049037% | PnL=0.859833% | Turnover=33.703%
+[Dia 347] CDI=0.049037% | PnL=0.253273% | Turnover=50.5091%
+[Dia 348] CDI=0.049037% | PnL=0.543313% | Turnover=39.5349%
+[Dia 349] CDI=0.049037% | PnL=0.684957% | Turnover=27.8717%
+[Dia 350] CDI=0.049037% | PnL=0.278% | Turnover=44.0528%
+[Dia 351] CDI=0.049037% | PnL=-0.328387% | Turnover=27.1501%
+[Dia 352] CDI=0.049037% | PnL=-0.866135% | Turnover=33.5408%
+[Dia 353] CDI=0.049037% | PnL=-0.334698% | Turnover=39.906%
+[Dia 354] CDI=0.049037% | PnL=0.386229% | Turnover=42.9437%
+[Dia 355] CDI=0.049037% | PnL=-0.976617% | Turnover=41.2414%
+[Dia 356] CDI=0.049037% | PnL=-0.286095% | Turnover=70%
+[Dia 357] CDI=0.049037% | PnL=-0.777255% | Turnover=42.3314%
+[Dia 358] CDI=0.049037% | PnL=-0.371749% | Turnover=28.5813%
+[Dia 359] CDI=0.049037% | PnL=0.967503% | Turnover=40.452%
+[Dia 360] CDI=0.049037% | PnL=-1.06459% | Turnover=50.4697%
+[Dia 361] CDI=0.049037% | PnL=-0.673404% | Turnover=34.3128%
+[Dia 362] CDI=0.049037% | PnL=0.399304% | Turnover=34.4225%
+[Dia 363] CDI=0.049037% | PnL=-0.446257% | Turnover=49.1746%
+[Dia 364] CDI=0.049037% | PnL=0.58556% | Turnover=33.5331%
+[Dia 365] CDI=0.049037% | PnL=1.15092% | Turnover=46.1438%
+[Dia 366] CDI=0.049037% | PnL=-0.148293% | Turnover=36.3297%
+[Dia 367] CDI=0.049037% | PnL=0.0668282% | Turnover=41.566%
+[Dia 368] CDI=0.052531% | PnL=-0.0320273% | Turnover=29.3122%
+[Dia 369] CDI=0.052531% | PnL=-0.0737962% | Turnover=44.6117%
+[Dia 370] CDI=0.052531% | PnL=0.568433% | Turnover=35.3514%
+[Dia 371] CDI=0.052531% | PnL=-0.0109778% | Turnover=22.2778%
+[Dia 372] CDI=0.052531% | PnL=-0.790568% | Turnover=64.4489%
+[Dia 373] CDI=0.052531% | PnL=-0.194321% | Turnover=44.7169%
+[Dia 374] CDI=0.052531% | PnL=-1.20817% | Turnover=38.5735%
+[Dia 375] CDI=0.052531% | PnL=-0.689257% | Turnover=47.3644%
+[Dia 376] CDI=0.052531% | PnL=0.0133505% | Turnover=39.7749%
+[Dia 377] CDI=0.052531% | PnL=0.157779% | Turnover=40.3413%
+[Dia 378] CDI=0.052531% | PnL=-1.19065% | Turnover=18.7399%
+[Dia 379] CDI=0.052531% | PnL=-1.33966% | Turnover=33.5419%
+[Dia 380] CDI=0.052531% | PnL=-0.978794% | Turnover=28.4711%
+[Dia 381] CDI=0.052531% | PnL=0.0165431% | Turnover=39.6353%
+[Dia 382] CDI=0.052531% | PnL=3.00615% | Turnover=37.838%
+[Dia 383] CDI=0.052531% | PnL=-1.07032% | Turnover=35.5582%
+[Dia 384] CDI=0.052531% | PnL=1.13428% | Turnover=39.6758%
+[Dia 385] CDI=0.052531% | PnL=0.875084% | Turnover=46.713%
+[Dia 386] CDI=0.052531% | PnL=-0.031188% | Turnover=44.0034%
+[Dia 387] CDI=0.052531% | PnL=-1.29399% | Turnover=47.0309%
+[Dia 388] CDI=0.052531% | PnL=-0.0139699% | Turnover=45.7742%
+[Dia 389] CDI=0.052531% | PnL=0.129686% | Turnover=36.8723%
+[Dia 390] CDI=0.052531% | PnL=1.52954% | Turnover=25.5471%
+[Dia 391] CDI=0.052531% | PnL=1.84905% | Turnover=31.4887%
+[Dia 392] CDI=0.052531% | PnL=0.246704% | Turnover=21.9517%
+[Dia 393] CDI=0.052531% | PnL=-0.18784% | Turnover=35.6405%
+[Dia 394] CDI=0.052531% | PnL=0.375997% | Turnover=39.9192%
+[Dia 395] CDI=0.052531% | PnL=0.631698% | Turnover=47.4439%
+[Dia 396] CDI=0.052531% | PnL=1.28108% | Turnover=52.3968%
+[Dia 397] CDI=0.052531% | PnL=-0.475079% | Turnover=47.0335%
+[Dia 398] CDI=0.052531% | PnL=0.0161035% | Turnover=29.811%
+[Dia 399] CDI=0.052531% | PnL=0.473394% | Turnover=47.8533%
+[Dia 400] CDI=0.054266% | PnL=0.440396% | Turnover=33.6218%
+[Dia 401] CDI=0.054266% | PnL=1.70397% | Turnover=30.2951%
+[Dia 402] CDI=0.054266% | PnL=0.353514% | Turnover=44.4284%
+[Dia 403] CDI=0.054266% | PnL=0.588335% | Turnover=32.055%
+[Dia 404] CDI=0.054266% | PnL=0.696449% | Turnover=30.5534%
+[Dia 405] CDI=0.054266% | PnL=1.0661% | Turnover=29.1418%
+[Dia 406] CDI=0.054266% | PnL=-1.22823% | Turnover=53.9645%
+[Dia 407] CDI=0.054266% | PnL=0.108102% | Turnover=46.0443%
+[Dia 408] CDI=0.054266% | PnL=0.162745% | Turnover=38.3684%
+[Dia 409] CDI=0.054266% | PnL=-1.04417% | Turnover=43.9604%
+[Dia 410] CDI=0.054266% | PnL=0.117778% | Turnover=32.4041%
+[Dia 411] CDI=0.054266% | PnL=0.340914% | Turnover=43.3128%
+[Dia 412] CDI=0.054266% | PnL=0.359038% | Turnover=34.5969%
+[Dia 413] CDI=0.054266% | PnL=0.636126% | Turnover=44.2833%
+[Dia 414] CDI=0.054266% | PnL=-0.263337% | Turnover=24.7384%
+[Dia 415] CDI=0.054266% | PnL=-0.0950422% | Turnover=41.8977%
+[Dia 416] CDI=0.054266% | PnL=-0.313428% | Turnover=40.7047%
+[Dia 417] CDI=0.054266% | PnL=-0.829891% | Turnover=20.3853%
+[Dia 418] CDI=0.054266% | PnL=-0.391882% | Turnover=37.0895%
+[Dia 419] CDI=0.054266% | PnL=-0.30665% | Turnover=26.0464%
+[Dia 420] CDI=0.054266% | PnL=-1.43267% | Turnover=45.5014%
+[Dia 421] CDI=0.054266% | PnL=0.38073% | Turnover=33.9479%
+[Dia 422] CDI=0.054266% | PnL=-0.319951% | Turnover=41.0994%
+[Dia 423] CDI=0.054266% | PnL=0.578947% | Turnover=33.8638%
+[Dia 424] CDI=0.054266% | PnL=0.212027% | Turnover=33.6071%
+[Dia 425] CDI=0.054266% | PnL=0.484798% | Turnover=46.0316%
+[Dia 426] CDI=0.054266% | PnL=-0.569058% | Turnover=35.3038%
+[Dia 427] CDI=0.054266% | PnL=0.789415% | Turnover=31.8933%
+[Dia 428] CDI=0.054266% | PnL=-0.276581% | Turnover=56.268%
+[Dia 429] CDI=0.054266% | PnL=-0.431132% | Turnover=37.6178%
+[Dia 430] CDI=0.055131% | PnL=-0.355228% | Turnover=36.1155%
+[Dia 431] CDI=0.055131% | PnL=-0.509847% | Turnover=42.0799%
+[Dia 432] CDI=0.055131% | PnL=1.32838% | Turnover=55.5724%
+[Dia 433] CDI=0.055131% | PnL=0.0338918% | Turnover=22.5039%
+[Dia 434] CDI=0.055131% | PnL=-0.0651874% | Turnover=28.6011%
+[Dia 435] CDI=0.055131% | PnL=0.510313% | Turnover=48.215%
+[Dia 436] CDI=0.055131% | PnL=0.761237% | Turnover=27.8181%
+[Dia 437] CDI=0.055131% | PnL=-0.0111624% | Turnover=33.3426%
+[Dia 438] CDI=0.055131% | PnL=-0.136504% | Turnover=60.5517%
+[Dia 439] CDI=0.055131% | PnL=1.09199% | Turnover=14.0254%
+[Dia 440] CDI=0.055131% | PnL=-0.432143% | Turnover=37.1422%
+[Dia 441] CDI=0.055131% | PnL=0.110169% | Turnover=33.3527%
+[Dia 442] CDI=0.055131% | PnL=-0.370197% | Turnover=26.2281%
+[Dia 443] CDI=0.055131% | PnL=-0.150262% | Turnover=44.9647%
+[Dia 444] CDI=0.055131% | PnL=0.0852491% | Turnover=43.289%
+[Dia 445] CDI=0.055131% | PnL=0.179747% | Turnover=34.9208%
+[Dia 446] CDI=0.055131% | PnL=-0.238209% | Turnover=61.1042%
+[Dia 447] CDI=0.055131% | PnL=0.650913% | Turnover=29.1969%
+[Dia 448] CDI=0.055131% | PnL=0.0119413% | Turnover=27.4894%
+[Dia 449] CDI=0.055131% | PnL=0.795814% | Turnover=39.7252%
+[Dia 450] CDI=0.055131% | PnL=-0.732424% | Turnover=30.6651%
+[Dia 451] CDI=0.055131% | PnL=-0.0672623% | Turnover=35.4739%
+[Dia 452] CDI=0.055131% | PnL=-0.646982% | Turnover=29.5912%
+[Dia 453] CDI=0.055131% | PnL=-0.429851% | Turnover=39.6102%
+[Dia 454] CDI=0.055131% | PnL=0.470846% | Turnover=44.9077%
+[Dia 455] CDI=0.055131% | PnL=0.908329% | Turnover=50.5819%
+[Dia 456] CDI=0.055131% | PnL=-0.253235% | Turnover=32.5331%
+[Dia 457] CDI=0.055131% | PnL=-0.19626% | Turnover=21.5961%
+[Dia 458] CDI=0.055131% | PnL=1.88131% | Turnover=32.0833%
+[Dia 459] CDI=0.055131% | PnL=-0.529172% | Turnover=37.9993%
+[Dia 460] CDI=0.055131% | PnL=-3.1145% | Turnover=26.1505%
+[Dia 461] CDI=0.055131% | PnL=0.898308% | Turnover=33.3871%
+[Dia 462] CDI=0.055131% | PnL=-0.941174% | Turnover=26.5426%
+[Dia 463] CDI=0.055131% | PnL=-0.447968% | Turnover=47.2265%
+[Dia 464] CDI=0.055131% | PnL=1.08207% | Turnover=45.9976%
+[Dia 465] CDI=0.055131% | PnL=0.217683% | Turnover=26.243%
+[Dia 466] CDI=0.055131% | PnL=-0.0726651% | Turnover=33.0883%
+[Dia 467] CDI=0.055131% | PnL=0.539545% | Turnover=34.2335%
+[Dia 468] CDI=0.055131% | PnL=-0.676655% | Turnover=27.5742%
+[Dia 469] CDI=0.055131% | PnL=0.335582% | Turnover=54.7227%
+[Dia 470] CDI=0.055131% | PnL=-0.264139% | Turnover=31.9325%
+[Dia 471] CDI=0.055131% | PnL=1.0213% | Turnover=55.6038%
+[Dia 472] CDI=0.055131% | PnL=-1.13284% | Turnover=29.5254%
+[Dia 473] CDI=0.055131% | PnL=-0.989983% | Turnover=39.2195%
+[Dia 474] CDI=0.055131% | PnL=-0.102648% | Turnover=43.6354%
+[Dia 475] CDI=0.055131% | PnL=1.32805% | Turnover=46.0937%
+[Dia 476] CDI=0.055131% | PnL=0.0740055% | Turnover=32.2254%
+[Dia 477] CDI=0.055131% | PnL=0.258034% | Turnover=49.3051%
+[Dia 478] CDI=0.055131% | PnL=0.365223% | Turnover=46.9005%
+[Dia 479] CDI=0.055131% | PnL=1.00686% | Turnover=37.0139%
+[Dia 480] CDI=0.055131% | PnL=-0.353473% | Turnover=42.5311%
+[Dia 481] CDI=0.055131% | PnL=0.104871% | Turnover=20.8536%
+[Dia 482] CDI=0.055131% | PnL=-0.118397% | Turnover=45.6694%
+[Dia 483] CDI=0.055131% | PnL=1.40702% | Turnover=35.2574%
+[Dia 484] CDI=0.055131% | PnL=0.33093% | Turnover=47.0906%
+[Dia 485] CDI=0.055131% | PnL=0.519388% | Turnover=44.7041%
+[Dia 486] CDI=0.055131% | PnL=-0.276983% | Turnover=21.1798%
+[Dia 487] CDI=0.055131% | PnL=0.268622% | Turnover=45.0385%
+[Dia 488] CDI=0.055131% | PnL=-0.968279% | Turnover=29.7135%
+[Dia 489] CDI=0.055131% | PnL=0.20165% | Turnover=16.1441%
+[Dia 490] CDI=0.055131% | PnL=-0.190412% | Turnover=40.3758%
+[Dia 491] CDI=0.055131% | PnL=0.938059% | Turnover=32.0079%
+[Dia 492] CDI=0.055131% | PnL=0.0627484% | Turnover=31.2259%
+[Dia 493] CDI=0.055131% | PnL=0.276782% | Turnover=45.6779%
+[Dia 494] CDI=0.055131% | PnL=0.286311% | Turnover=29.4004%
+[Dia 495] CDI=0.055131% | PnL=0.39577% | Turnover=45.2398%
+[Dia 496] CDI=0.055131% | PnL=0.115657% | Turnover=57.0826%
+[Dia 497] CDI=0.055131% | PnL=0.0260116% | Turnover=25.6971%
+[Dia 498] CDI=0.055131% | PnL=0.205071% | Turnover=50.8098%
+[Dia 499] CDI=0.055131% | PnL=0.136786% | Turnover=44.5107%
+[Dia 500] CDI=0.055131% | PnL=-0.922287% | Turnover=44.5403%
+[Dia 501] CDI=0.055131% | PnL=-0.277911% | Turnover=31.9423%
+[Dia 502] CDI=0.055131% | PnL=0.476872% | Turnover=36.1297%
+[Dia 503] CDI=0.055131% | PnL=0.474741% | Turnover=43.585%
+[Dia 504] CDI=0.055131% | PnL=0.546889% | Turnover=44.5947%
+[Dia 505] CDI=0.055131% | PnL=-0.22092% | Turnover=33.0737%
+[Dia 506] CDI=0.055131% | PnL=0.740947% | Turnover=32.8763%
+[Dia 507] CDI=0.055131% | PnL=-0.576857% | Turnover=31.1323%
+[Dia 508] CDI=0.055131% | PnL=0.655469% | Turnover=32.2873%
+[Dia 509] CDI=0.055131% | PnL=-0.347249% | Turnover=33.8697%
+[Dia 510] CDI=0.055131% | PnL=-0.254727% | Turnover=40.2595%
+[Dia 511] CDI=0.055131% | PnL=0.791207% | Turnover=49.6174%
+[Dia 512] CDI=0.055131% | PnL=-0.328972% | Turnover=65.3729%
+[Dia 513] CDI=0.055131% | PnL=0.270634% | Turnover=42.7356%
+[Dia 514] CDI=0.055131% | PnL=-0.263958% | Turnover=52.8357%
+[Dia 515] CDI=0.055131% | PnL=0.514661% | Turnover=48.9583%
+[Dia 516] CDI=0.055131% | PnL=0.730576% | Turnover=33.8536%
+[Dia 517] CDI=0.055131% | PnL=-0.335851% | Turnover=40.0147%
+[Dia 518] CDI=0.055131% | PnL=0.529313% | Turnover=40.0332%
+[Dia 519] CDI=0.055131% | PnL=0.304343% | Turnover=27.6757%
+[Dia 520] CDI=0.055131% | PnL=0.455018% | Turnover=30.0438%
+[Dia 521] CDI=0.055131% | PnL=0.829978% | Turnover=32.7623%
+[Dia 522] CDI=0.055131% | PnL=0.827546% | Turnover=37.2811%
+[Dia 523] CDI=0.055131% | PnL=0.359141% | Turnover=37.9002%
+[Dia 524] CDI=0.055131% | PnL=0.0297562% | Turnover=63.1469%
+[Dia 525] CDI=0.055131% | PnL=0.879991% | Turnover=24.8097%
+[Dia 526] CDI=0.055131% | PnL=0.268532% | Turnover=40.1542%
+[Dia 527] CDI=0.055131% | PnL=-0.363134% | Turnover=25.6421%
+[Dia 528] CDI=0.055131% | PnL=0.948689% | Turnover=40.3796%
+[Dia 529] CDI=0.055131% | PnL=-0.271946% | Turnover=33.2995%
+[Dia 530] CDI=0.055131% | PnL=0.246639% | Turnover=53.87%
+[Dia 531] CDI=0.055131% | PnL=1.00827% | Turnover=33.2212%
+[Dia 532] CDI=0.055131% | PnL=0.66093% | Turnover=40.0851%
+[Dia 533] CDI=0.055131% | PnL=-0.62261% | Turnover=30.3852%
+[Dia 534] CDI=0.055131% | PnL=-1.12137% | Turnover=46.4074%
+[Dia 535] CDI=0.055131% | PnL=-0.281601% | Turnover=22.825%
+[Dia 536] CDI=0.055131% | PnL=0.646784% | Turnover=40.3727%
+[Dia 537] CDI=0.055131% | PnL=-0.394705% | Turnover=49.6831%
+[Dia 538] CDI=0.055131% | PnL=1.17261% | Turnover=33.9124%
+[Dia 539] CDI=0.055131% | PnL=2.03553% | Turnover=31.1453%
+[Dia 540] CDI=0.055131% | PnL=2.84307% | Turnover=25.9971%
+[Dia 541] CDI=0.055131% | PnL=0.794507% | Turnover=31.6881%
+[Dia 542] CDI=0.055131% | PnL=0.396128% | Turnover=43.9923%
+[Dia 543] CDI=0.055131% | PnL=0.596647% | Turnover=40.6548%
+[Dia 544] CDI=0.055131% | PnL=0.600302% | Turnover=34.4193%
+[Dia 545] CDI=0.055131% | PnL=-0.44812% | Turnover=38.482%
+[Dia 546] CDI=0.055131% | PnL=0.455067% | Turnover=26.6786%
+[Dia 547] CDI=0.055131% | PnL=0.291856% | Turnover=24.424%
+[Dia 548] CDI=0.055131% | PnL=0.449722% | Turnover=43.2222%
+[Dia 549] CDI=0.055131% | PnL=1.50871% | Turnover=37.8892%
+[Dia 550] CDI=0.055131% | PnL=-0.634091% | Turnover=44.1262%
+[Dia 551] CDI=0.055131% | PnL=0.228193% | Turnover=30.9064%
+[Dia 552] CDI=0.055131% | PnL=0.792321% | Turnover=56.1054%
+[Dia 553] CDI=0.055131% | PnL=-0.933437% | Turnover=37.1114%
+[Dia 554] CDI=0.055131% | PnL=-0.0356495% | Turnover=31.7153%
+[Dia 555] CDI=0.055131% | PnL=0.0972767% | Turnover=51.6921%
+[Dia 556] CDI=0.055131% | PnL=0.00632867% | Turnover=45.4644%
+[Dia 557] CDI=0.055131% | PnL=-0.27386% | Turnover=40.4211%
+[Dia 558] CDI=0.055131% | PnL=0.811141% | Turnover=41.7765%
+[Dia 559] CDI=0.055131% | PnL=0.988504% | Turnover=50.8886%
+[Dia 560] CDI=0.055131% | PnL=0.530939% | Turnover=20.7365%
+[Dia 561] CDI=0.055131% | PnL=1.00111% | Turnover=63.0502%
+[Dia 562] CDI=0.055131% | PnL=0.757475% | Turnover=55.5706%
+[Dia 563] CDI=0.055131% | PnL=-0.127285% | Turnover=32.5795%
+[Dia 564] CDI=0.055131% | PnL=-0.140488% | Turnover=45.1114%
+[Dia 565] CDI=0.055131% | PnL=0.499738% | Turnover=38.4818%
+[Dia 566] CDI=0.055131% | PnL=-0.00634583% | Turnover=43.2653%
+[Dia 567] CDI=0.055131% | PnL=0.0788303% | Turnover=55.363%
+[Dia 568] CDI=0.055131% | PnL=0.0256127% | Turnover=37.4698%
+[Dia 569] CDI=0.055131% | PnL=0.3504% | Turnover=38.3718%
+[Dia 570] CDI=0.055131% | PnL=0.347052% | Turnover=36.6117%
+[Dia 571] CDI=0.055131% | PnL=0.483066% | Turnover=25.2932%
+[Dia 572] CDI=0.055131% | PnL=-0.4119% | Turnover=55.1006%
+[Dia 573] CDI=0.055131% | PnL=0.447884% | Turnover=22.8731%
+[Dia 574] CDI=0.055131% | PnL=0.25582% | Turnover=33.5577%
+[Dia 575] CDI=0.055131% | PnL=-0.176206% | Turnover=41.7114%
+[Dia 576] CDI=0.055131% | PnL=-0.645442% | Turnover=39.9944%
+[Dia 577] CDI=0.055131% | PnL=-0.482891% | Turnover=34.2769%
+[Dia 578] CDI=0.055131% | PnL=2.03262% | Turnover=30.8605%
+[Dia 579] CDI=0.055131% | PnL=1.85062% | Turnover=40.2998%
+[Dia 580] CDI=0.055131% | PnL=1.63413% | Turnover=50.9883%
+[Dia 581] CDI=0.055131% | PnL=0.88206% | Turnover=35.093%
+[Dia 582] CDI=0.055131% | PnL=1.35923% | Turnover=36.4949%
+[Dia 583] CDI=0.055131% | PnL=0.809918% | Turnover=40.6292%
+[Dia 584] CDI=0.055131% | PnL=-0.434499% | Turnover=17.3872%
+[Dia 585] CDI=0.055131% | PnL=-0.512345% | Turnover=38.1689%
+[Dia 586] CDI=0.055131% | PnL=1.15642% | Turnover=36.5225%
+[Dia 587] CDI=0.055131% | PnL=0.803946% | Turnover=56.461%
+[Dia 588] CDI=0.055131% | PnL=-1.4457% | Turnover=42.4884%
+[Dia 589] CDI=0.055131% | PnL=0.281953% | Turnover=54.1636%
+[Dia 590] CDI=0.055131% | PnL=0.0743133% | Turnover=33.266%
+[Dia 591] CDI=0.055131% | PnL=1.5829% | Turnover=24.8319%
+[Dia 592] CDI=0.055131% | PnL=-0.362824% | Turnover=35.8886%
+[Dia 593] CDI=0.055131% | PnL=2.46768% | Turnover=51.1167%
+[Dia 594] CDI=0.055131% | PnL=-0.170224% | Turnover=35.2648%
+[Dia 595] CDI=0.055131% | PnL=-1.3529% | Turnover=17.3944%
+[Dia 596] CDI=0.055131% | PnL=-0.0170131% | Turnover=41.8353%
+[Dia 597] CDI=0.055131% | PnL=0.244707% | Turnover=29.3994%
+[Dia 598] CDI=0.055131% | PnL=1.9455% | Turnover=47.1743%
+[Dia 599] CDI=0.055131% | PnL=-0.879681% | Turnover=39.1266%
+[Dia 600] CDI=0.055131% | PnL=1.59908% | Turnover=27.5294%
+[Dia 601] CDI=0.055131% | PnL=0.203845% | Turnover=45.8758%
+[Dia 602] CDI=0.055131% | PnL=-0.856189% | Turnover=52.0121%
+[Dia 603] CDI=0.055131% | PnL=-0.701661% | Turnover=46.1053%
+[Dia 604] CDI=0.055131% | PnL=0.320293% | Turnover=70%
+[Dia 605] CDI=0.055131% | PnL=-1.69975% | Turnover=49.8636%
+[Dia 606] CDI=0.055131% | PnL=-0.510224% | Turnover=39.7404%
+[Dia 607] CDI=0.055131% | PnL=-1.76213% | Turnover=37.5439%
+[Dia 608] CDI=0.055131% | PnL=-1.7951% | Turnover=34.8035%
+[Dia 609] CDI=0.055131% | PnL=0.515978% | Turnover=36.5905%
+[Dia 610] CDI=0.055131% | PnL=0.816063% | Turnover=38.7758%
+[Dia 611] CDI=0.055131% | PnL=0.207197% | Turnover=59.3776%
+[Dia 612] CDI=0.055131% | PnL=-0.577013% | Turnover=28.6181%
+[Dia 613] CDI=0.055131% | PnL=0.000407335% | Turnover=45.6354%
+[Dia 614] CDI=0.055131% | PnL=0.457191% | Turnover=42.1059%
+[Dia 615] CDI=0.055131% | PnL=0.114572% | Turnover=31.9749%
+[Dia 616] CDI=0.055131% | PnL=-0.642248% | Turnover=34.3853%
+[Dia 617] CDI=0.054266% | PnL=-0.274651% | Turnover=29.2498%
+[Dia 618] CDI=0.054266% | PnL=-0.664666% | Turnover=50.4342%
+[Dia 619] CDI=0.054266% | PnL=1.12766% | Turnover=46.305%
+[Dia 620] CDI=0.054266% | PnL=0.838526% | Turnover=39.3398%
+[Dia 621] CDI=0.054266% | PnL=0.896013% | Turnover=32.1917%
+[Dia 622] CDI=0.054266% | PnL=-0.651458% | Turnover=24.8755%
+[Dia 623] CDI=0.054266% | PnL=0.598479% | Turnover=34.3589%
+[Dia 624] CDI=0.054266% | PnL=0.597087% | Turnover=47.2724%
+[Dia 625] CDI=0.054266% | PnL=0.409352% | Turnover=32.3274%
+[Dia 626] CDI=0.054266% | PnL=-0.478204% | Turnover=37.7529%
+[Dia 627] CDI=0.054266% | PnL=0.191737% | Turnover=37.8248%
+[Dia 628] CDI=0.054266% | PnL=0.932993% | Turnover=59.9809%
+[Dia 629] CDI=0.054266% | PnL=-0.305524% | Turnover=44.0885%
+[Dia 630] CDI=0.054266% | PnL=-0.890513% | Turnover=50.7427%
+[Dia 631] CDI=0.054266% | PnL=1.29613% | Turnover=30.6111%
+[Dia 632] CDI=0.054266% | PnL=1.18046% | Turnover=34.7133%
+[Dia 633] CDI=0.054266% | PnL=0.699739% | Turnover=25.9994%
+[Dia 634] CDI=0.054266% | PnL=-1.1682% | Turnover=23.3004%
+[Dia 635] CDI=0.054266% | PnL=-0.373842% | Turnover=31.3385%
+[Dia 636] CDI=0.054266% | PnL=0.863903% | Turnover=31.2983%
+[Dia 637] CDI=0.054266% | PnL=-1.36102% | Turnover=36.0172%
+[Dia 638] CDI=0.054266% | PnL=0.326592% | Turnover=49.0523%
+[Dia 639] CDI=0.054266% | PnL=0.165452% | Turnover=47.5877%
+[Dia 640] CDI=0.054266% | PnL=-0.224243% | Turnover=44.0308%
+[Dia 641] CDI=0.054266% | PnL=0.237441% | Turnover=27.8141%
+[Dia 642] CDI=0.054266% | PnL=-0.00967714% | Turnover=43.6747%
+[Dia 643] CDI=0.054266% | PnL=0.00904356% | Turnover=35.4458%
+[Dia 644] CDI=0.054266% | PnL=0.264371% | Turnover=26.7665%
+[Dia 645] CDI=0.0534% | PnL=0.390544% | Turnover=35.0456%
+[Dia 646] CDI=0.0534% | PnL=-0.320621% | Turnover=19.4631%
+[Dia 647] CDI=0.0534% | PnL=-0.707186% | Turnover=30.5166%
+[Dia 648] CDI=0.0534% | PnL=0.186121% | Turnover=56.5587%
+[Dia 649] CDI=0.0534% | PnL=-1.03183% | Turnover=37.9024%
+[Dia 650] CDI=0.0534% | PnL=-0.0144239% | Turnover=41.891%
+[Dia 651] CDI=0.0534% | PnL=0.477822% | Turnover=46.6223%
+[Dia 652] CDI=0.0534% | PnL=-0.753203% | Turnover=32.1358%
+[Dia 653] CDI=0.0534% | PnL=-0.034702% | Turnover=41.8884%
+[Dia 654] CDI=0.0534% | PnL=0.979893% | Turnover=41.9567%
+[Dia 655] CDI=0.0534% | PnL=0.451428% | Turnover=28.3912%
+[Dia 656] CDI=0.0534% | PnL=-0.314077% | Turnover=52.3418%
+[Dia 657] CDI=0.0534% | PnL=-0.390743% | Turnover=38.2581%
+[Dia 658] CDI=0.0534% | PnL=-0.513779% | Turnover=32.2169%
+[Dia 659] CDI=0.0534% | PnL=0.096469% | Turnover=42.6312%
+[Dia 660] CDI=0.0534% | PnL=-0.34728% | Turnover=39.73%
+[Dia 661] CDI=0.0534% | PnL=-0.440394% | Turnover=32.757%
+[Dia 662] CDI=0.0534% | PnL=-0.224103% | Turnover=37.672%
+[Dia 663] CDI=0.0534% | PnL=0.00378044% | Turnover=44.1238%
+[Dia 664] CDI=0.0534% | PnL=-0.537209% | Turnover=24.719%
+[Dia 665] CDI=0.0534% | PnL=-1.26882% | Turnover=24.6527%
+[Dia 666] CDI=0.0534% | PnL=-0.917934% | Turnover=45.931%
+[Dia 667] CDI=0.0534% | PnL=-0.647086% | Turnover=37.7254%
+[Dia 668] CDI=0.0534% | PnL=-0.251424% | Turnover=41.6085%
+[Dia 669] CDI=0.0534% | PnL=-0.218728% | Turnover=50.2874%
+[Dia 670] CDI=0.0534% | PnL=0.468242% | Turnover=45.8582%
+[Dia 671] CDI=0.0534% | PnL=-0.185739% | Turnover=31.5834%
+[Dia 672] CDI=0.0534% | PnL=-0.716873% | Turnover=35.3203%
+[Dia 673] CDI=0.0534% | PnL=0.161144% | Turnover=37.3086%
+[Dia 674] CDI=0.0534% | PnL=-0.570103% | Turnover=47.0376%
+[Dia 675] CDI=0.0534% | PnL=1.31252% | Turnover=28.2343%
+[Dia 676] CDI=0.0534% | PnL=-0.328209% | Turnover=39.0896%
+[Dia 677] CDI=0.0534% | PnL=-0.39308% | Turnover=50.9737%
+[Dia 678] CDI=0.052531% | PnL=0.751018% | Turnover=37.2877%
+[Dia 679] CDI=0.052531% | PnL=0.0437626% | Turnover=48.1197%
+[Dia 680] CDI=0.052531% | PnL=0.302207% | Turnover=41.1616%
+[Dia 681] CDI=0.052531% | PnL=0.661999% | Turnover=29.9131%
+[Dia 682] CDI=0.052531% | PnL=-0.253893% | Turnover=34.9919%
+[Dia 683] CDI=0.052531% | PnL=-0.713975% | Turnover=50.5718%
+[Dia 684] CDI=0.052531% | PnL=0.95823% | Turnover=37.5171%
+[Dia 685] CDI=0.052531% | PnL=0.90845% | Turnover=41.2916%
+[Dia 686] CDI=0.052531% | PnL=-0.320302% | Turnover=37.3887%
+[Dia 687] CDI=0.052531% | PnL=0.87012% | Turnover=39.2159%
+[Dia 688] CDI=0.052531% | PnL=0.346937% | Turnover=27.7308%
+[Dia 689] CDI=0.052531% | PnL=0.0704872% | Turnover=26.9658%
+[Dia 690] CDI=0.052531% | PnL=-0.234276% | Turnover=39.7454%
+[Dia 691] CDI=0.052531% | PnL=0.411049% | Turnover=39.2819%
+[Dia 692] CDI=0.052531% | PnL=0.0318981% | Turnover=29.273%
+[Dia 693] CDI=0.052531% | PnL=0.0701703% | Turnover=67.0641%
+[Dia 694] CDI=0.052531% | PnL=0.908224% | Turnover=50.7189%
+[Dia 695] CDI=0.052531% | PnL=-0.367761% | Turnover=70%
+[Dia 696] CDI=0.052531% | PnL=-0.92684% | Turnover=47.2669%
+[Dia 697] CDI=0.052531% | PnL=1.18597% | Turnover=46.7999%
+[Dia 698] CDI=0.052531% | PnL=0.790777% | Turnover=41.1748%
+[Dia 699] CDI=0.052531% | PnL=-0.748081% | Turnover=51.0806%
+[Dia 700] CDI=0.052531% | PnL=-0.458947% | Turnover=27.1569%
+[Dia 701] CDI=0.052531% | PnL=0.610729% | Turnover=28.6018%
+[Dia 702] CDI=0.052531% | PnL=0.643388% | Turnover=38.9515%
+[Dia 703] CDI=0.052531% | PnL=-1.35722% | Turnover=34.8155%
+[Dia 704] CDI=0.052531% | PnL=0.0705621% | Turnover=31.9838%
+[Dia 705] CDI=0.052531% | PnL=1.26251% | Turnover=54.3909%
+[Dia 706] CDI=0.052531% | PnL=0.951566% | Turnover=52.7084%
+[Dia 707] CDI=0.052531% | PnL=-0.431069% | Turnover=39.211%
+[Dia 708] CDI=0.052531% | PnL=1.96519% | Turnover=38.344%
+[Dia 709] CDI=0.052531% | PnL=0.0897566% | Turnover=36.9109%
+[Dia 710] CDI=0.052531% | PnL=1.10011% | Turnover=32.0123%
+[Dia 711] CDI=0.052531% | PnL=1.60701% | Turnover=41.5677%
+[Dia 712] CDI=0.052531% | PnL=-0.513092% | Turnover=34.0309%
+[Dia 713] CDI=0.05166% | PnL=-0.512252% | Turnover=44.5596%
+[Dia 714] CDI=0.05166% | PnL=-0.963149% | Turnover=37.1071%
+[Dia 715] CDI=0.05166% | PnL=0.0944787% | Turnover=51.0404%
+[Dia 716] CDI=0.05166% | PnL=-1.21003% | Turnover=36.7339%
+[Dia 717] CDI=0.05166% | PnL=-0.189376% | Turnover=58.4558%
+[Dia 718] CDI=0.05166% | PnL=0.093726% | Turnover=44.2944%
+[Dia 719] CDI=0.05166% | PnL=0.231259% | Turnover=42.9882%
+[Dia 720] CDI=0.05166% | PnL=-1.03664% | Turnover=32.6245%
+[Dia 721] CDI=0.05166% | PnL=0.0637043% | Turnover=46.2727%
+[Dia 722] CDI=0.05166% | PnL=0.0186403% | Turnover=33.0867%
+[Dia 723] CDI=0.05166% | PnL=0.613574% | Turnover=43.7633%
+[Dia 724] CDI=0.05166% | PnL=-0.411067% | Turnover=33.1811%
+[Dia 725] CDI=0.05166% | PnL=0.434872% | Turnover=70%
+[Dia 726] CDI=0.05166% | PnL=1.22769% | Turnover=34.1969%
+[Dia 727] CDI=0.05166% | PnL=-0.00783467% | Turnover=30.4544%
+[Dia 728] CDI=0.05166% | PnL=1.24257% | Turnover=24.8288%
+[Dia 729] CDI=0.05166% | PnL=1.14777% | Turnover=52.7623%
+[Dia 730] CDI=0.05166% | PnL=0.0782115% | Turnover=41.3323%
+[Dia 731] CDI=0.05166% | PnL=-0.899339% | Turnover=61.7918%
+[Dia 732] CDI=0.05166% | PnL=1.29661% | Turnover=56.3668%
+[Dia 733] CDI=0.05166% | PnL=1.22965% | Turnover=43.372%
+[Dia 734] CDI=0.05166% | PnL=0.0484826% | Turnover=43.822%
+[Dia 735] CDI=0.05166% | PnL=0.318189% | Turnover=27.8621%
+[Dia 736] CDI=0.05166% | PnL=-0.711368% | Turnover=40.3509%
+[Dia 737] CDI=0.05166% | PnL=0.312303% | Turnover=30.8002%
+[Dia 738] CDI=0.05166% | PnL=0.593332% | Turnover=37.346%
+[Dia 739] CDI=0.05166% | PnL=0.154467% | Turnover=39.5093%
+[Dia 740] CDI=0.05166% | PnL=0.362042% | Turnover=47.0362%
+
+
+====================================================
+           ANALISE ESTATISTICA DO BACKTEST
+====================================================
+
+--- GERAL ---
+Dias simulados             : 678
+
+--- CARTEIRA INICIAL (PESOS) ---
+PETR4.SA:                0.0000%
+VALE3.SA:                1.0906%
+ITUB3.SA:                0.5961%
+WEGE3.SA:                2.2727%
+BBAS3.SA:                0.0000%
+CMIG3.SA:                1.7762%
+AAPL34.SA:               4.9891%
+MSFT34.SA:               3.1064%
+NVDC34.SA:               10.9599%
+GOGL34.SA:               0.5799%
+TSMC34.SA:               6.1900%
+COCA34.SA:               13.9493%
+Caixa inicial:           54.4898%
+
+--- CARTEIRA FINAL (PESOS) ---
+PETR4.SA:                21.1162%
+VALE3.SA:                0.0000%
+ITUB3.SA:                22.8670%
+WEGE3.SA:                5.3603%
+BBAS3.SA:                0.6271%
+CMIG3.SA:                6.3312%
+AAPL34.SA:               2.3642%
+MSFT34.SA:               18.6404%
+NVDC34.SA:               4.2284%
+GOGL34.SA:               2.0377%
+TSMC34.SA:               0.0000%
+COCA34.SA:               16.4276%
+Caixa final:             0.0000%
+
+--- RETORNO (MPC vs. BUY & HOLD) ---
+Retorno medio diario       : 0.0874% (B&H: 0.1072%)
+Retorno acumulado          : 76.9683% (B&H: 101.6402%)
+Retorno anualizado         : 23.6341% (B&H: 29.7794%)
+Dias positivos             : 55.4572% (B&H: 56.7847%)
+
+--- RISCO (MPC vs. BUY & HOLD) ---
+Volatilidade diaria        : 0.8020% (B&H: 0.8624%)
+Volatilidade anualizada    : 12.7308% (B&H: 13.6909%)
+Sharpe                     : 0.7674 (B&H: 1.0776)
+Max Drawdown               : -15.9453% (B&H: -13.8976%)
+VaR 95% diario             : 1.1806% (B&H: 1.2766%)
+CVaR 95% diario            : 1.6555% (B&H: 1.8944%)
+
+--- CDI ---
+CDI acumulado              : 39.0753%
+Excesso sobre CDI (MPC)    : 37.8930%
+Excesso sobre CDI (B&H)    : 62.5649%
+
+--- RETORNO ---
+Retorno medio diario       : 0.0874%
+Retorno acumulado          : 76.9683%
+Retorno anualizado         : 23.6341%
+Dias positivos             : 55.4572%
+
+--- RISCO ---
+Volatilidade diaria        : 0.8020%
+Volatilidade anualizada    : 12.7308%
+Sharpe                     : 0.7674
+Max Drawdown               : -15.9453%
+VaR 95% diario             : 1.1806%
+CVaR 95% diario            : 1.6555%
+
+--- TURNOVER ---
+Turnover medio             : 39.4871%
+Turnover maximo            : 70.0000%
+
+--- CONFIGURACAO ---
+Janela estatistica         : 63 dias
+Horizonte MPC              : 5 dias
+Turnover maximo permitido : 70.0000%
+CVaR alpha                 : 0.9500
+====================================================
+
+=== SIMULACAO MPC CONCLUIDA ===
