@@ -2,6 +2,7 @@
 
 #include <cmath>
 #include <iostream>
+#include <stdexcept>
 
 #include "DifferentialEvolution.hpp"
 #include "Mercado.hpp"
@@ -14,9 +15,20 @@ ResultadoBacktest executarBacktest(
 {
     ResultadoBacktest resultado;
 
+    if (config.periodo_rebalanceamento <= 0)
+        throw std::invalid_argument(
+            "periodo_rebalanceamento deve ser positivo.");
+    if (config.janela_estatistica <= 0)
+        throw std::invalid_argument("janela_estatistica deve ser positiva.");
+    if (config.janela_estatistica < config.periodo_rebalanceamento)
+        throw std::invalid_argument(
+            "janela_estatistica deve conter ao menos um periodo de rebalanceamento.");
+    if (config.horizonte_mpc <= 0)
+        throw std::invalid_argument("horizonte_mpc deve ser positivo.");
+
     const int total_dias = mercado.tamanhoHistorico();
     const int dia_inicio = config.janela_estatistica;
-    const int dia_fim = total_dias - config.horizonte_mpc;
+    const int dia_fim = total_dias;
 
     if (dia_inicio >= dia_fim)
         return resultado;
@@ -37,65 +49,71 @@ ResultadoBacktest executarBacktest(
     bool bh_inicializado = false;
 
     std::cout
-        << "\nIniciando simulacao de rebalanceamento via MPC..."
+        << "\nIniciando simulacao de rebalanceamento mensal via MPC..."
         << std::endl;
 
     for (int t = dia_inicio; t < dia_fim; ++t) {
 
-        auto retornos_esperados =
-            mercado.calcularRetornosEsperados(
-                t,
-                config.janela_estatistica
-            );
-
-        auto matriz_cov =
-            mercado.calcularMatrizCovariancia(
-                t,
-                config.janela_estatistica
-            );
-
-        // Sem look-ahead: somente o CDI conhecido em t.
         const double cdi_hoje =
             mercado.obterCdiDia(t);
 
-        std::vector<double> cdi_horizonte(
-            config.horizonte_mpc,
-            cdi_hoje
-        );
-
-        auto retornos_cenarios =
-            mercado.obterCenariosRetorno(
-                t,
-                config.janela_estatistica
-            );
-
-        auto melhor_trajetoria_deltas =
-            de.otimizar(
-                peso_atual,
-                matriz_cov,
-                retornos_esperados,
-                cdi_horizonte,
-                retornos_cenarios,
-                config.max_turnover,
-                config.horizonte_mpc,
-                num_ativos
-            );
-
-        if (melhor_trajetoria_deltas.empty()) {
-            std::cerr
-                << "Erro: DE retornou uma trajetoria vazia."
-                << std::endl;
-            return resultado;
-        }
-
-        const auto& delta =
-            melhor_trajetoria_deltas[0];
-
         double turnover_dia = 0.0;
+        const bool dia_rebalanceamento =
+            (t - dia_inicio) % config.periodo_rebalanceamento == 0;
 
-        for (int i = 0; i < num_ativos; ++i) {
-            turnover_dia += std::abs(delta[i]);
-            peso_atual[i] += delta[i];
+        if (dia_rebalanceamento) {
+            const auto retornos_esperados =
+                mercado.calcularRetornosEsperados(
+                    t,
+                    config.janela_estatistica,
+                    config.periodo_rebalanceamento
+                );
+
+            const auto matriz_cov =
+                mercado.calcularMatrizCovariancia(
+                    t,
+                    config.janela_estatistica,
+                    config.periodo_rebalanceamento
+                );
+
+            const double cdi_periodo =
+                std::pow(1.0 + cdi_hoje, config.periodo_rebalanceamento) - 1.0;
+            const std::vector<double> cdi_horizonte(
+                config.horizonte_mpc,
+                cdi_periodo
+            );
+
+            const auto retornos_cenarios =
+                mercado.obterCenariosRetorno(
+                    t,
+                    config.janela_estatistica,
+                    config.periodo_rebalanceamento
+                );
+
+            const auto melhor_trajetoria_deltas =
+                de.otimizar(
+                    peso_atual,
+                    matriz_cov,
+                    retornos_esperados,
+                    cdi_horizonte,
+                    retornos_cenarios,
+                    config.max_turnover,
+                    config.horizonte_mpc,
+                    num_ativos
+                );
+
+            if (melhor_trajetoria_deltas.empty()) {
+                std::cerr
+                    << "Erro: DE retornou uma trajetoria vazia."
+                    << std::endl;
+                return resultado;
+            }
+
+            const auto& delta = melhor_trajetoria_deltas[0];
+            for (int i = 0; i < num_ativos; ++i) {
+                turnover_dia += std::abs(delta[i]);
+                peso_atual[i] += delta[i];
+            }
         }
 
         if (!bh_inicializado) {
@@ -122,6 +140,20 @@ ResultadoBacktest executarBacktest(
         const double peso_caixa = 1.0 - soma_pesos;
 
         pnl_dia += peso_caixa * cdi_hoje;
+
+        const double patrimonio_futuro = 1.0 + pnl_dia;
+        if (patrimonio_futuro <= 0.0) {
+            std::cerr
+                << "Erro: patrimonio do portfolio tornou-se nao positivo."
+                << std::endl;
+            return resultado;
+        }
+
+        for (int i = 0; i < num_ativos; ++i) {
+            peso_atual[i] =
+                peso_atual[i] * (1.0 + retornos_reais[i]) /
+                patrimonio_futuro;
+        }
 
         double pnl_bh_dia = 0.0;
         double soma_pesos_bh = 0.0;
@@ -178,7 +210,8 @@ ResultadoBacktest executarBacktest(
         resultado.retornos_portfolio,
         resultado.retornos_cdi,
         resultado.turnovers,
-        config.dias_ano
+        config.dias_ano,
+        config.periodo_rebalanceamento
     );
 
     return resultado;

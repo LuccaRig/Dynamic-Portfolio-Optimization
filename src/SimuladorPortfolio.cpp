@@ -144,7 +144,16 @@ double SimuladorPortfolio::avaliarTrajetoria(
         // Custo linear de negociação, além da restrição de turnover.
         custo_transacao += turnover;
 
-        pesos_atuais = pesos_novos;
+
+        const double patrimonio_futuro = 1.0 + retorno_risco + retorno_caixa;
+        if (patrimonio_futuro <= 0.0)
+            return 1e12;
+
+        for (size_t i = 0; i < pesos_atuais.size(); ++i) {
+            pesos_atuais[i] =
+                pesos_novos[i] * (1.0 + retornos_esperados[i]) /
+                patrimonio_futuro;
+        }
     }
 
     const double retorno_medio = retorno_acumulado / N;

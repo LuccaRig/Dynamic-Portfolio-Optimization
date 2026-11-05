@@ -35,5 +35,6 @@ MetricasBacktest calcularMetricas(
     const std::vector<double>& retornos_portfolio,
     const std::vector<double>& retornos_cdi,
     const std::vector<double>& turnovers,
-    int dias_ano = 252
+    int dias_ano = 252,
+    int periodo_rebalanceamento = 1
 );

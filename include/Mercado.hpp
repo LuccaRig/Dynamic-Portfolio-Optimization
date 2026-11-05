@@ -11,10 +11,13 @@ public:
     int tamanhoHistorico() const;
     int numAtivos() const;
 
-    std::vector<double> calcularRetornosEsperados(int dia_atual, int tamanho_janela) const;
-    std::vector<std::vector<double>> calcularMatrizCovariancia(int dia_atual, int tamanho_janela) const;
+    std::vector<double> calcularRetornosEsperados(
+        int dia_atual, int tamanho_janela, int tamanho_periodo = 1) const;
+    std::vector<std::vector<double>> calcularMatrizCovariancia(
+        int dia_atual, int tamanho_janela, int tamanho_periodo = 1) const;
 
-    std::vector<std::vector<double>> obterCenariosRetorno(int dia_atual, int tamanho_janela) const;
+    std::vector<std::vector<double>> obterCenariosRetorno(
+        int dia_atual, int tamanho_janela, int tamanho_periodo = 1) const;
     std::vector<double> obterRetornosReais(int dia_atual) const;
     double obterCdiDia(int dia_atual) const;
     std::vector<std::string> obterNomesAtivos() const;

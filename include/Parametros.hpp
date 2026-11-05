@@ -4,14 +4,14 @@
 struct ParametrosCusto {
     double alpha = 3.0;      // retorno
     double beta  = 0.5;      // CVaR
-    double gamma = 0.1;      // variância
+    double gamma = 0.0;      // variância
     double eta   = 0.1;      // custo de transação
     double cvar_alpha = 0.95;
 };
 
 struct ParametrosDE {
-    int tamanho_populacao = 100;
-    int max_geracoes = 40;
+    int tamanho_populacao = 200;
+    int max_geracoes = 80;
     double F = 0.7;
     double CR = 0.9;
 };

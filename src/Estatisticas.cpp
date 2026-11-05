@@ -3,6 +3,7 @@
 #include <algorithm>
 #include <cmath>
 #include <numeric>
+#include <stdexcept>
 
 double media(const std::vector<double>& valores)
 {
@@ -124,9 +125,14 @@ MetricasBacktest calcularMetricas(
     const std::vector<double>& retornos_portfolio,
     const std::vector<double>& retornos_cdi,
     const std::vector<double>& turnovers,
-    int dias_ano)
+    int dias_ano,
+    int periodo_rebalanceamento)
 {
     MetricasBacktest m;
+
+    if (periodo_rebalanceamento <= 0)
+        throw std::invalid_argument(
+            "periodo_rebalanceamento deve ser positivo.");
 
     if (retornos_portfolio.empty())
         return m;
@@ -183,7 +189,15 @@ MetricasBacktest calcularMetricas(
     m.var_95 = VaR95(retornos_liquidos);
     m.cvar_95 = CVaR95(retornos_liquidos);
 
-    m.turnover_medio = media(turnovers);
+    if (!turnovers.empty()) {
+        const double turnover_total =
+            std::accumulate(turnovers.begin(), turnovers.end(), 0.0);
+        const size_t numero_rebalanceamentos =
+            1 + (turnovers.size() - 1) /
+                    static_cast<size_t>(periodo_rebalanceamento);
+        m.turnover_medio =
+            turnover_total / static_cast<double>(numero_rebalanceamentos);
+    }
 
     if (!turnovers.empty())
         m.turnover_maximo =

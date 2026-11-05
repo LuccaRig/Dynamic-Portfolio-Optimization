@@ -28,3 +28,23 @@ add_executable(PortifolioMPC ${SOURCES})
 
 # Vincula o OpenMP ao executável compilado
 target_link_libraries(PortifolioMPC PRIVATE OpenMP::OpenMP_CXX)
+
+include(CTest)
+if(BUILD_TESTING)
+    add_executable(test_mercado_mensal
+        tests/test_mercado_mensal.cpp
+        src/Mercado.cpp
+    )
+    add_test(NAME mercado_mensal COMMAND test_mercado_mensal)
+
+    add_executable(test_backtest_mensal
+        tests/test_backtest_mensal.cpp
+        src/Backtest.cpp
+        src/Mercado.cpp
+        src/DifferentialEvolution.cpp
+        src/SimuladorPortfolio.cpp
+        src/Estatisticas.cpp
+    )
+    target_link_libraries(test_backtest_mensal PRIVATE OpenMP::OpenMP_CXX)
+    add_test(NAME backtest_mensal COMMAND test_backtest_mensal)
+endif()

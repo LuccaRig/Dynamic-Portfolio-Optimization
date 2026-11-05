@@ -129,19 +129,22 @@ void imprimirRelatorio(
 
     std::cout
         << "\n--- TURNOVER ---\n"
-        << "Turnover medio             : "
+        << "Turnover medio por rebalanceamento: "
         << m.turnover_medio * 100.0 << "%\n"
-        << "Turnover maximo            : "
+        << "Turnover maximo por rebalanceamento: "
         << m.turnover_maximo * 100.0 << "%\n";
 
     std::cout
         << "\n--- CONFIGURACAO ---\n"
         << "Janela estatistica         : "
-        << config.janela_estatistica << " dias\n"
+        << config.janela_estatistica << " pregoes\n"
+        << "Rebalanceamento            : a cada "
+        << config.periodo_rebalanceamento << " pregoes\n"
         << "Horizonte MPC              : "
-        << config.horizonte_mpc << " dias\n"
+        << config.horizonte_mpc << " periodos de "
+        << config.periodo_rebalanceamento << " pregoes\n"
         << "Turnover maximo permitido : "
-        << config.max_turnover * 100.0 << "%\n"
+        << config.max_turnover * 100.0 << "% por rebalanceamento\n"
         << "CVaR alpha                 : "
         << cvar_alpha << "\n"
         << "====================================================\n";
